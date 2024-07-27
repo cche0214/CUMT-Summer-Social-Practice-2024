@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>中国矿业大学·E心向党社会实践</title>
+    <script src="js\echarts.js"></script>
+    <script src="js\chain.js"></script>
+    <script src="js\jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        /* body标签和容器container标签 */
+        body {
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        /* 头顶header标签栏，有校徽和团队名称 */
+        header {
+            background: #f4f4f4;
+            padding: 20px 0;
+            text-align: center;
+        }
+        /* 导航栏CSS样式 */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgb(30,50,100);
+            padding: 5px 0;
+        }
+        nav a {
+            color: #fff;
+            padding: 10px 30px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav a:hover {
+            color: #ff9900;
+            text-decoration: none;
+        }
+        /* 内容CSS样式 */
+        .content {
+            background: #fff;
+            padding: 10px;
+            color: #333;
+            font-size: 18px;
+        }
+        .content h1 {
+            text-align: center;
+            color: rgb(30,50,100);
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 3px;
+        }
+        .content hr {
+            margin: 0;
+            height: 2px;
+            background-color:rgb(30,50,100);
+            border: none;
+        }
+        /* 内容文本CSS样式 */
+        .text {
+            font-family: 宋体;
+            font-size: 18px;
+            text-indent: 2em;
+        }
+        .form {
+            font-family: 宋体;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .info {
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+            margin:5px;
+        }
+        .footer {
+            background: rgb(30,50,100);
+            color: #fff;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 14px;
+        }
+        /* 内容图片和介绍 */
+        header img {
+            width: 470px;
+            height: 105px;
+            display: inline;
+        }
+        header span {
+            color: rgb(30,50,100);
+            font-size: 50px;
+            font-family: 楷体;
+        }
+        .textimg {
+            display: block;
+            margin: auto;
+        }
+        .textexp {
+            display: flex;
+            justify-content: center;
+            font-size: 14px;
+            color: #777;
+        }
+        #main {
+            width: 80%; 
+            height: 100%; 
+        }
+        .container {
+            height: 100%;
+            width: 100%;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+        }
+        #content-left {
+            width: 100%; 
+            height: 100%; 
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="./images/矿大校徽校名.png" alt="">
+        <span>&nbsp;&nbsp;E心向党社会实践</span>
+    </header>
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="ChinaMap.html">地图展示</a>
+        <a href="redstory.html">红色故事</a>
+        <a href="news.html">实践新闻</a>
+        <a href="contractus.html">联系我们</a>
+    </nav>
+
+    <div class="container" style="height: 100%; width: 100%"> <!-- 容器设置 -->
+        <div id="content-left" class="col-md-12" style="margin-top: 10px"> <!-- 设置左侧内容块 -->
+            <div id="main" style="width: 100%; height: 800px"></div> <!-- 主图表容器 -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有</p>
+    </div>
+</body>
+
+<script>
+    // echarts初始化：获取myChart对象
+    var myChart = echarts.init(document.getElementById('main'));
+    
+    // 使用jQuery在文档加载完毕后执行
+    $(function(){
+        // 获取表格对象
+        let table = $("#tbody");
+
+        // 发起ajax请求，获取json数据
+        $.ajax({
+            url: "json/Robotsalse.json", // json文件位置
+            type: "GET", // 请求类型
+            dataType: "json", // 数据类型
+            success: function(data) { // 请求成功后的回调函数
+                let res = []; // 自定义一个空数组接收请求回来的json数据
+                
+                // 遍历json数据
+                for(let i = 0; i < data.length; i++){
+                    res.push({
+                        name: data[i].name, // 省份名称
+                        value: data[i].value, // 坐标
+                        sales: data[i].Sales // 销量
+                    });
+                };
+
+                // 将封装的json数据传递到dealWithData函数中进行渲染处理使用
+                dealWithData(res);
+
+            }
+        });
+    });
+
+    // 渲染ECharts图表
+    function dealWithData(data) {
+        let dataValue = data;
+        option = {
+            tooltip: { // 鼠标划过省份下弹框
+                show: true,
+                triggerOn: 'click' // 点击生效
+            },
+            geo: {
+                map: 'china', // 必须写
+                roam: false, // 拖拽功能；自选关闭开启
+                zoom: 1.2, // 地图缩放比例
+                center: [105, 36], // 地图位置
+                itemStyle: { // 地图省份的样式；包括板块颜色和边框颜色
+                    areaColor: '#f5f2f2',
+                    borderColor: "#835f5f",
+                },
+                label: { // 省份字体样式；包括是否展示，字体大小和颜色
+                    show: true,
+                    fontSize: "11.5",
+                    color: "rgb(107,102,102)"
+                },
+                emphasis: { // 鼠标划过的高亮设置；包括省份板块颜色和字体等
+                    itemStyle: {
+                        areaColor: '#d0a3a3',
+                    },
+                    label: {
+                        show: true,
+                        color: "rgb(255,255,255)"
+                    }
+                }
+            },
+
+            series: [
+                // 我们的散点
+                {
+                    name: '销量',
+                    type: 'scatter',
+                    coordinateSystem: 'geo', // 坐标系统
+                    data: dataValue, // 数据
+                    symbolSize: 12, // 点的大小
+                    itemStyle: {
+                        color: "#f13434",
+                        shadowBlur: 2,
+                        shadowColor: "#333"
+                    },
+                    tooltip: { // 鼠标点击散点的下弹框
+                        show: true,
+                        triggerOn: "click",
+                        formatter: function(data1) {
+                            let data2 = data1.data;
+                            return  data2.sales;
+                        }
+                    },
+                },
+
+                // 涟漪特效
+                {
+                    name: "产品销量",
+                    type: "effectScatter",
+                    coordinateSystem: "geo",
+                    data: dataValue, // 数据
+                    symbolSize: 6, // 涟漪大小
+                    showEffectOn: "render", // 涟漪效应
+                    rippleEffect: {
+                        brushType: "stroke",
+                        color: "#f13434",
+                        period: 10, // 周期
+                        scale: 10 // 规模
+                    },
+                    emphasis: {
+                        scale: true, // 悬停动画
+                    },
+                    label: {
+                        formatter: "{b}",
+                        position: "top",
+                        show: true,
+                        fontSize: "10",
+                    },
+                    itemStyle: {
+                        color: "#f13434",
+                        shadowBlur: 2,
+                        shadowColor: "#333"
+                    },
+                    tooltip: { // 鼠标点击散点的下弹框
+                        show: true,
+                        triggerOn: "click",
+                        formatter: function(data1) {
+                            console.log(data1);
+                            let data2 = data1.data;
+                            return  data2.sales;
+                        }
+                    },
+                    zlevel: 1
+                }
+            ]
+        };
+        myChart.setOption(option); // 应用设置
+    }
+
+    // 点击事件处理
+    myChart.on('dblclick', function(param) {
+        let data = param.data;
+        if (data) {
+            let url;
+        switch (data.name) {
+            case '内蒙古':
+                url = 'https://www.cumt.edu.cn/';
+                break;
+            case '重庆':
+                url = 'https://www.cumt.edu.cn/kdzc/list.htm';
+                break;
+            case '沈阳918历史博物馆':
+                url = 'https://example.com/918';
+                break;
+            case '西安事变纪念馆':
+                url = 'https://example.com/xian';
+                break;
+            case '南昌八一起义纪念馆':
+                url = 'https://example.com/nanchang';
+                break;
+            case '商丘陈官庄':
+                url = 'https://example.com/chenguangzhuang';
+                break;
+            case '浙江省台州市茅畲乡下街村，温岭市坞根镇':
+                url = 'https://example.com/taizhou';
+                break;
+            default:
+                url = 'https://example.com/default';
+        }
+
+        // 跳转到相应的网页
+        window.location.href = url;
+        }
+    });
+
+</script>
+</html>
