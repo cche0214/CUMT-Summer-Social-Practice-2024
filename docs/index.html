@@ -1,226 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8"> <!-- 指定文档的字符编码 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 视口设置 -->
-    <title>中国矿业大学·E心向党社会实践</title> <!-- 网页标题 -->
-    <script src="js\echarts.js"></script> <!-- 引入ECharts库 -->
-    <script src="js\chain.js"></script> <!-- 引入自定义的chain.js脚本 -->
-    <script src="js\jquery-3.5.1.js"></script> <!-- 引入jQuery库 -->
-    <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- 引入Bootstrap CSS库 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>中国矿业大学·E心向党社会实践</title>
     <style>
-        html, body {
-            height: 100%; /* 设置 html 和 body 高度为 100% */
-            margin: 0; /* 去除默认的外边距 */
-            padding: 0; /* 去除默认的内边距 */
-            overflow: hidden; /* 隐藏滚动条 */
+        /* body标签和容器container标签 */
+        body {
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-
         .container {
-            height: 100%; /* 设置容器高度为 100% */
-            width: 100%; /* 设置容器宽度为 100% */
-            display: flex; /* 使用 flexbox 布局 */
-            justify-content: center; /* 水平居中对齐 */
-            align-items: center; /* 垂直居中对齐 */
+            width: 80%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
         }
-
-        #content-left {
-            width: 100%; /* 设置内容块宽度为 100% */
-            height: 100%; /* 设置内容块高度为 100% */
+        /* 头顶header标签栏，有校徽和团队名称 */
+        header {
+            background: #f4f4f4;
+            padding: 20px 0;
+            text-align: center;
+            height: 106.1px;
         }
-
-        #main {
-            width: 100%; /* 设置图表容器宽度为 100% */
-            height: 100%; /* 设置图表容器高度为 100% */
+        /* 导航栏CSS样式 */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgb(30,50,100);
+            padding: 5px 0;
+        }
+        nav a {
+            color: #fff;
+            padding: 10px 30px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav a:hover {
+            color: #ff9900;
+            text-decoration: none;
+        }
+        /* 内容CSS样式 */
+        .content {
+            background: #fff;
+            padding: 10px;
+            color: #333;
+            font-size: 18px;
+        }
+        .content h1 {
+            text-align: center;
+            color: rgb(30,50,100);
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 3px;
+        }
+        .content hr {
+            margin: 0;
+            height: 2px;
+            background-color:rgb(30,50,100);
+            border: none;
+        }
+        /* 内容文本CSS样式 */
+        .text {
+            font-family: 宋体;
+            font-size: 18px;
+            text-indent: 2em;
+        }
+        .form {
+            font-family: 宋体;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .info {
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+            margin:5px;
+        }
+        .footer {
+            background: rgb(30,50,100);
+            color: #fff;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 14px;
+        }
+        /* 内容图片和介绍 */
+        header img {
+            width: 470px;
+            height: 105px;
+            display: inline;
+        }
+        header span {
+            color: rgb(30,50,100);
+            font-size: 50px;
+            font-family: 楷体;
+        }
+        .textimg {
+            display: block;
+            margin: auto;
+        }
+        .textexp {
+            display: flex;
+            justify-content: center;
+            font-size: 14px;
+            color: #777;
         }
     </style>
 </head>
+<body>
+    <header>
+        <img src="./images/矿大校徽校名.png" alt="">
+        <!-- 页眉部分 -->
+        <span>&nbsp;&nbsp;E心向党社会实践</span>
+    </header>
+    <nav>
+        <!-- 导航栏 -->
+        <a href="index.html">首页</a>
+        <a href="ChinaMap.html">地图展示</a>
+        <a href="redstory.html">红色故事</a>
+        <a href="news.html">实践新闻</a>
+        <a href="contractus.html">联系我们</a>
+    </nav>
+    <div class="container">
+        <div class="content">
+            <!-- 主要内容部分 -->
+            <h1>2024年高等学校实验室安全管理培训班在徐举办</h1><hr>
 
-<body style="background-color: gray"> <!-- 设置背景颜色 -->
-<div class="container" style="height: 100%; width: 100%"> <!-- 容器设置 -->
-    <div id="content-left" class="col-md-12" style="margin-top: 20px"> <!-- 设置左侧内容块 -->
-        <div id="main" style="width: 100%; height: 800px"></div> <!-- 主图表容器 -->
+            <p class="info">发布者：陈岳豪 发布时间：2023-12-27 </p>
+            <img class="textimg" src="./images/smile.jpg" alt="">
+            <span class="textexp">笑脸</span>
+            <p class="text">7月17日至20日，由江苏省高等教育学会高校实验室研究委员会主办，我校承办的2024年高等学校实验室安全管理培训班在徐州召开，来自全省70余所高校600余人参加了本次培训班。</p>
+            <p class="text">我校副校长王忠宾出席开班仪式并致辞。他介绍了我校办学历史及发展情况，并指出，高校实验室是人才培养、科学研究的重要场所，是“双一流”建设的重要支撑。实验室安全直接关系到广大教师和学生的生命财产安全，关系学校和社会的安全稳定。当前高校实验室安全工作总体趋于向好，但是形势依然严峻，存量风险不断集聚，增量风险不断涌现，对实验室安全管理工作提出了更高要求。通过本次培训，必将进一步提升我省实验室安全管理工作人员的安全意识、知识、技能水平，推动我省高校实验室安全工作迈向更高水平。</p>
+            <p class="text">江苏省教育厅科技产业处徐宁致辞，并就2024年江苏地方高校实验室安全现场检查安排作了说明。他指出，高校实验室安全是国家总体安全的重要组成部分，事关教育事业改革发展全局和广大师生切身利益。实验室安全管理人员要准确把握习近平总书记关于安全生产工作的新理念、新思想的科学内涵和精神实质，深刻汲取高校实验室安全事故惨痛教训，不断增强发展的安全性。</p>
+            <p class="text">南京大学校长助理李斌代表江苏省高校实验室研究会致辞，他指出，本次培训班是贯彻落实教育部和省教育厅关于加强高校实验室安全管理工作具体要求，总结今年上半年全省高校实验室管理安全管理自查自纠和现场检查情况，提升我省高校实验室安全管理工作能力和水平的重要举措。相信本次培训班的顺利开办，必将深入推进我省高校实验室安全管理工作再上新台阶。</p>
+            <p class="text">中国高等教育学会实验室管理研究会秘书长刘克新教授代表中国高等教育学会实验室管理工作分会对本次培训班的召开表示祝贺，他指出，江苏省高校实验室安全管理工作一直走在全国前列，希望广大实验室安全管理人员通过本次培训，共同树立有担当、讲科学、低调务实的工作理念，在实验室安全管理工作岗位上做出优异成绩。</p>
+            
+            <p class="form">新闻来源：XXX&nbsp;摄影：XXX&nbsp;责任编辑：XXX&nbsp;审核:XX</p>
+        </div>
     </div>
-</div>
+    <div class="footer">
+        <!-- 页脚部分 -->
+        <p>联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有</p>
+    </div>
 </body>
-
-<script>
-    // echarts初始化：获取myChart对象
-    var myChart = echarts.init(document.getElementById('main'));
-    
-    // 使用jQuery在文档加载完毕后执行
-    $(function(){
-        // 获取表格对象
-        let table = $("#tbody");
-
-        // 发起ajax请求，获取json数据
-        $.ajax({
-            url: "json/Robotsalse.json", // json文件位置
-            type: "GET", // 请求类型
-            dataType: "json", // 数据类型
-            success: function(data) { // 请求成功后的回调函数
-                let res = []; // 自定义一个空数组接收请求回来的json数据
-                
-                // 遍历json数据
-                for(let i = 0; i < data.length; i++){
-                    res.push({
-                        name: data[i].name, // 省份名称
-                        value: data[i].value, // 坐标
-                        sales: data[i].Sales // 销量
-                    });
-                };
-
-                // 将封装的json数据传递到dealWithData函数中进行渲染处理使用
-                dealWithData(res);
-
-            }
-        });
-    });
-
-    // 渲染ECharts图表
-    function dealWithData(data) {
-        let dataValue = data;
-        option = {
-            title: { // 设置一个标题
-                text: '中国矿业大学·E心向党社会实践',
-                x: 'center',
-                textStyle: {
-                    color: '#fff',
-                    fontSize: "50"
-                }
-            },
-            tooltip: { // 鼠标划过省份下弹框
-                show: true,
-                triggerOn: 'click' // 点击生效
-            },
-            geo: {
-                map: 'china', // 必须写
-                roam: false, // 拖拽功能；自选关闭开启
-                zoom: 1.01, // 地图缩放比例
-                center: [105, 36], // 地图位置
-                itemStyle: { // 地图省份的样式；包括板块颜色和边框颜色
-                    areaColor: '#f5f2f2',
-                    borderColor: "#835f5f",
-                },
-                label: { // 省份字体样式；包括是否展示，字体大小和颜色
-                    show: true,
-                    fontSize: "11.5",
-                    color: "rgb(107,102,102)"
-                },
-                emphasis: { // 鼠标划过的高亮设置；包括省份板块颜色和字体等
-                    itemStyle: {
-                        areaColor: '#d0a3a3',
-                    },
-                    label: {
-                        show: true,
-                        color: "rgb(255,255,255)"
-                    }
-                }
-            },
-
-            series: [
-                // 我们的散点
-                {
-                    name: '销量',
-                    type: 'scatter',
-                    coordinateSystem: 'geo', // 坐标系统
-                    data: dataValue, // 数据
-                    symbolSize: 12, // 点的大小
-                    itemStyle: {
-                        color: "#f13434",
-                        shadowBlur: 2,
-                        shadowColor: "#333"
-                    },
-                    tooltip: { // 鼠标点击散点的下弹框
-                        show: true,
-                        triggerOn: "click",
-                        formatter: function(data1) {
-                            let data2 = data1.data;
-                            return  data2.sales;
-                        }
-                    },
-                },
-
-                // 涟漪特效
-                {
-                    name: "产品销量",
-                    type: "effectScatter",
-                    coordinateSystem: "geo",
-                    data: dataValue, // 数据
-                    symbolSize: 6, // 涟漪大小
-                    showEffectOn: "render", // 涟漪效应
-                    rippleEffect: {
-                        brushType: "stroke",
-                        color: "#f13434",
-                        period: 10, // 周期
-                        scale: 10 // 规模
-                    },
-                    emphasis: {
-                        scale: true, // 悬停动画
-                    },
-                    label: {
-                        formatter: "{b}",
-                        position: "top",
-                        show: true,
-                        fontSize: "10",
-                    },
-                    itemStyle: {
-                        color: "#f13434",
-                        shadowBlur: 2,
-                        shadowColor: "#333"
-                    },
-                    tooltip: { // 鼠标点击散点的下弹框
-                        show: true,
-                        triggerOn: "click",
-                        formatter: function(data1) {
-                            console.log(data1);
-                            let data2 = data1.data;
-                            return  data2.sales;
-                        }
-                    },
-                    zlevel: 1
-                }
-            ]
-        };
-        myChart.setOption(option); // 应用设置
-    }
-
-    // 点击事件处理
-    myChart.on('dblclick', function(param) {
-        let data = param.data;
-        if (data) {
-            let url;
-        switch (data.name) {
-            case '内蒙古':
-                url = 'https://www.cumt.edu.cn/';
-                break;
-            case '重庆':
-                url = 'https://www.cumt.edu.cn/kdzc/list.htm';
-                break;
-            case '沈阳918历史博物馆':
-                url = 'https://example.com/918';
-                break;
-            case '西安事变纪念馆':
-                url = 'https://example.com/xian';
-                break;
-            case '南昌八一起义纪念馆':
-                url = 'https://example.com/nanchang';
-                break;
-            case '商丘陈官庄':
-                url = 'https://example.com/chenguangzhuang';
-                break;
-            case '浙江省台州市茅畲乡下街村，温岭市坞根镇':
-                url = 'https://example.com/taizhou';
-                break;
-            default:
-                url = 'https://example.com/default';
-        }
-
-        // 跳转到相应的网页
-        window.location.href = url;
-        }
-    });
-
-</script>
 </html>
