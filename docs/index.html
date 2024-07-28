@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>中国矿业大学·E心向党社会实践</title>
     <style>
         /* body标签和容器container标签 */
@@ -45,6 +44,7 @@
         }
         /* 内容CSS样式 */
         .content {
+            margin: 20px;
             background: #fff;
             padding: 10px;
             color: #333;
@@ -78,7 +78,7 @@
             font-size: 14px;
             color: #777;
             text-align: center;
-            margin:5px;
+            margin: 5px;
         }
         .footer {
             background: rgb(30,50,100);
@@ -108,42 +108,431 @@
             font-size: 14px;
             color: #777;
         }
+
+        /* 轮播图样式 */
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .banner {
+            width: 1120px;
+            margin: 0 auto;
+            border: none;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .imgList {
+            border: none;
+            list-style: none;
+            position: absolute;
+            display: flex;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .imgList img {
+            width: 1120px;
+            height: 500px;
+        }
+        .imgList li {
+            position: relative;
+            flex: 0 0 1120px;
+        }
+        /* 添加标题样式，左下角 */
+        .imgTitle {
+            position: absolute;
+            left: 15px;
+            bottom: 15px;
+            color: white;
+            background-color: gray;
+            padding: 2px 5px;
+            border-radius: 5px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            font-family: 宋体;
+        }
+        /* 修改圆点位置，右下角 */
+        .circle {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+        }
+        .circle a {
+            width: 15px;
+            height: 15px;
+            background: gray;
+            display: block;
+            border-radius: 50%;
+            opacity: .6;
+            margin-left: 5px;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+        .circle a.hover {
+            background: white;
+            opacity: 1;
+        }
+        /* 添加左右滑动按钮样式 */
+        .nav {
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            cursor: pointer;
+            opacity: .6;
+            background-color: gray;
+        }
+        .nav.prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .nav.next {
+            right: 0;
+            border-radius: 0 3px 3px 0;
+        }
+        .nav:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* 实践团介绍部分CSS样式 */
+        .heading {
+            text-align: center;
+            color: rgb(30,50,100);
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 3px;
+            font-weight: 700;
+        }
+        .heading-hr {
+            margin: 0;
+            height: 2px;
+            background-color:rgb(30,50,100);
+            border: none;
+        }
+        .team-intro {
+            background: #fff;
+            width: 100%;
+            height: 100vh; /* 高度与轮播图一致 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* 确保内容不会超出容器 */
+            flex-wrap: wrap; /* 换行显示 */
+        }
+        .team-intro img {
+            width: 45%;
+            height: auto;
+            margin-left: 20px;
+        }
+        .team-intro .intro-text {
+            width: 100%;
+            font-family: 宋体;
+            box-sizing: border-box;
+            margin: 10px;
+            text-indent: 2em;
+        }
+
+        .shell {
+            margin-top: 20px;
+            width: 100%;
+            height: 600px;
+            display: flex;
+            flex-direction: row;
+            position: relative;
+        }
+
+        .box {
+            flex: 1;
+            overflow: hidden;
+            transition: .5s;
+            margin: 0 20px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, .5);
+            border-radius: 20px;
+            border: 10px solid #fff;
+            background-color: #fff;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .box>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .box>span {
+            font: 200 45px '优设标题黑';
+            text-align: center;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: opacity 0.5s;
+        }
+
+        .box:hover {
+            flex-basis:50%;
+        }
+
+        .box:hover>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .introduction-bar {
+            width: 100%;
+            color: black;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 24px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="./images/矿大校徽校名.png" alt="">
-        <!-- 页眉部分 -->
-        <span>&nbsp;&nbsp;E心向党社会实践</span>
+        <span>&nbsp;&nbsp;红色攻城狮 ——“e新向党”实践团</span>
     </header>
     <nav>
-        <!-- 导航栏 -->
         <a href="index.html">首页</a>
         <a href="ChinaMap.html">地图展示</a>
-        <a href="redstory.html">红色故事</a>
-        <a href="news.html">实践新闻</a>
+        <a href="redstoryindex.html">红色故事</a>
+        <a href="newsindex.html">实践新闻</a>
         <a href="contractus.html">联系我们</a>
     </nav>
     <div class="container">
         <div class="content">
-            <!-- 主要内容部分 -->
-            <h1>2024年高等学校实验室安全管理培训班在徐举办</h1><hr>
 
-            <p class="info">发布者：陈岳豪 发布时间：2023-12-27 </p>
-            <img class="textimg" src="./images/smile.jpg" alt="">
-            <span class="textexp">笑脸</span>
-            <p class="text">7月17日至20日，由江苏省高等教育学会高校实验室研究委员会主办，我校承办的2024年高等学校实验室安全管理培训班在徐州召开，来自全省70余所高校600余人参加了本次培训班。</p>
-            <p class="text">我校副校长王忠宾出席开班仪式并致辞。他介绍了我校办学历史及发展情况，并指出，高校实验室是人才培养、科学研究的重要场所，是“双一流”建设的重要支撑。实验室安全直接关系到广大教师和学生的生命财产安全，关系学校和社会的安全稳定。当前高校实验室安全工作总体趋于向好，但是形势依然严峻，存量风险不断集聚，增量风险不断涌现，对实验室安全管理工作提出了更高要求。通过本次培训，必将进一步提升我省实验室安全管理工作人员的安全意识、知识、技能水平，推动我省高校实验室安全工作迈向更高水平。</p>
-            <p class="text">江苏省教育厅科技产业处徐宁致辞，并就2024年江苏地方高校实验室安全现场检查安排作了说明。他指出，高校实验室安全是国家总体安全的重要组成部分，事关教育事业改革发展全局和广大师生切身利益。实验室安全管理人员要准确把握习近平总书记关于安全生产工作的新理念、新思想的科学内涵和精神实质，深刻汲取高校实验室安全事故惨痛教训，不断增强发展的安全性。</p>
-            <p class="text">南京大学校长助理李斌代表江苏省高校实验室研究会致辞，他指出，本次培训班是贯彻落实教育部和省教育厅关于加强高校实验室安全管理工作具体要求，总结今年上半年全省高校实验室管理安全管理自查自纠和现场检查情况，提升我省高校实验室安全管理工作能力和水平的重要举措。相信本次培训班的顺利开办，必将深入推进我省高校实验室安全管理工作再上新台阶。</p>
-            <p class="text">中国高等教育学会实验室管理研究会秘书长刘克新教授代表中国高等教育学会实验室管理工作分会对本次培训班的召开表示祝贺，他指出，江苏省高校实验室安全管理工作一直走在全国前列，希望广大实验室安全管理人员通过本次培训，共同树立有担当、讲科学、低调务实的工作理念，在实验室安全管理工作岗位上做出优异成绩。</p>
-            
-            <p class="form">新闻来源：XXX&nbsp;摄影：XXX&nbsp;责任编辑：XXX&nbsp;审核:XX</p>
+            <!-- 主要内容部分 -->
+            <div class="banner">
+                <ul class="imgList">
+                    <li>
+                        <a href="https://xwzx.cumt.edu.cn/"><img src="./images/矿大美景1.jpg" alt=""></a>
+                        <div class="imgTitle">金秋校园</div>
+                    </li>
+                    <li>
+                        <a href="https://xwzx.cumt.edu.cn/"><img src="./images/矿大美景2.jpg" alt=""></a>
+                        <div class="imgTitle">冬日校园</div>
+                    </li>
+                    <li>
+                        <a href="https://xwzx.cumt.edu.cn/37/40/c513a669504/page.htm"><img src="./images/矿大美景3.jpg" alt=""></a>
+                        <div class="imgTitle">日在校园</div>
+                    </li>
+                    <li>
+                        <a href="https://xwzx.cumt.edu.cn/37/06/c513a669446/page.htm"><img src="./images/矿大美景4.jpg" alt=""></a>
+                        <div class="imgTitle">不是校园</div>
+                    </li>
+                </ul>
+                <div class="circle"></div>
+                <div class="nav prev">&#10094;</div>
+                <div class="nav next">&#10095;</div>
+            </div>
+
+            <div class="heading">实践团介绍</div><hr class="heading-hr">
+
+            <!-- 添加实践团介绍部分 -->
+            <div class="team-intro">
+                <img src="./images/矿大美景1.jpg" alt="团队照片1">
+                <img src="./images/矿大美景2.jpg" alt="团队照片2">
+                <img src="./images/矿大美景3.jpg" alt="团队照片3">
+                <img src="./images/矿大美景4.jpg" alt="团队照片4">
+                <div class="intro-text">
+                    <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一，设有国家批准的研究生院。学校现坐落于素有“五省通衢”之称的国家历史文化名城——江苏省徐州市，有文昌和南湖两个校园，占地4200余亩，校舍建筑面积156万平方米，馆藏图书文献2000多万册（件）。学校现有2个国家“双一流”建设学科、1个一级学科国家重点学科，8个二级学科国家重点学科，1个国家重点（培育）学科；7个江苏省优势学科、7个江苏省重点学科；18个一级学科博士点，2个专业学位博士点，36个一级学科硕士点，20个专业学位硕士点。学校设23个学院，74个本科专业，有全日制普通本科生23600余人，各类博士、硕士研究生13300余人，留学生680余人，继续教育学生10000余人；有教职工3450余人；有8个国家级科研平台，50个省部级科研平台，1个国家大学科技园；另设有1个独立学院徐海学院。</p>
+                    
+                </div>
+            </div>
+
+            <div class="heading">历史足迹</div><hr class="heading-hr">
+
+            <div class="shell">
+                <div class="box" onclick="navigateTo('https://www.cumt.edu.cn/#')" onmouseover="showIntroduction(this, '2023年矿大迎来了新一轮的学术发展......')" onmouseout="resetText(this)">
+                    <img src="./images/矿大美景1.jpg">
+                    <span>2024</span>
+                </div>
+                <div class="box" onclick="navigateTo('https://www.cumt.edu.cn/#')" onmouseover="showIntroduction(this, '2023年矿大迎来了新一轮的学术发展......')" onmouseout="resetText(this)">
+                    <img src="./images/矿大美景2.jpg">
+                    <span>2023</span>
+                </div>
+                <div class="box" onclick="navigateTo('https://www.cumt.edu.cn/#')" onmouseover="showIntroduction(this, '2022年矿大开展了多项科研项目......')" onmouseout="resetText(this)">
+                    <img src="./images/矿大美景3.jpg">
+                    <span>2022</span>
+                </div>
+                <div class="box" onclick="navigateTo('https://www.cumt.edu.cn/#')" onmouseover="showIntroduction(this, '2021年矿大学生在全国竞赛中取得佳绩......')" onmouseout="resetText(this)">
+                    <img src="./images/矿大美景4.jpg">
+                    <span>2021</span>
+                </div>
+                <div class="box" onclick="navigateTo('https://www.cumt.edu.cn/#')" onmouseover="showIntroduction(this, '2020年矿大迎来了建校110周年......')" onmouseout="resetText(this)">
+                    <img src="./images/矿大美景1.jpg">
+                    <span>2020</span>
+                </div>
+                <div class="box" onclick="navigateTo('https://www.cumt.edu.cn/#')" onmouseover="showIntroduction(this, '2019年矿大在科研领域取得重大突破......')" onmouseout="resetText(this)">
+                    <img src="./images/矿大美景2.jpg">
+                    <span>2019</span>
+                </div>
+                <div class="box" onclick="navigateTo('https://www.cumt.edu.cn/#')" onmouseover="showIntroduction(this, '2018年矿大新增了多个本科专业......')" onmouseout="resetText(this)">
+                    <img src="./images/矿大美景3.jpg">
+                    <span>2018</span>
+                </div>
+            </div>
+            <div class="introduction-bar" id="introductionBar">示例文本</div>
+
+            <div class="heading">本次实践</div><hr class="heading-hr">
         </div>
     </div>
     <div class="footer">
-        <!-- 页脚部分 -->
         <p>联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有</p>
     </div>
+    
+    <script>
+        window.onload = function () {
+            var imgList = document.querySelector('.imgList');
+            var circle = document.querySelector('.circle');
+            var thisIndex = 0;
+            var imgListLi = imgList.children;
+            var circleA = circle.children;
+            var flag = true;
+
+            // 动态生成底部圆点，并添加到 circle 中
+            for (var i = 0; i < imgList.children.length; i++) {
+                var aNode = document.createElement('a');
+                aNode.setAttribute('index', i);
+                if (i == 0) {
+                    aNode.className = 'hover';
+                }
+                circle.appendChild(aNode);
+            }
+
+            // 圆点点击事件
+            circle.addEventListener('click', function (e) {
+                if (flag) {
+                    flag = false;
+                    if (e.target.nodeName != 'A') {
+                        return false;
+                    }
+                    thisIndex = e.target.getAttribute('index');
+                    slow(imgList, -thisIndex * 1120, function () {
+                        flag = true;
+                    });
+                    circleChange();
+                }
+            });
+
+            // 自动轮播
+            function antoChange() {
+                setInterval(function () {
+                    if (flag) {
+                        flag = false;
+                        if (thisIndex >= circleA.length) {
+                            thisIndex = 0;
+                        }
+                        slow(imgList, -thisIndex * 1120, function () {
+                            flag = true;
+                        });
+                        circleChange();
+                        thisIndex++;
+                    }
+                }, 3000);
+            }
+
+            // 更新圆点状态
+            function circleChange() {
+                for (var i = 0; i < circleA.length; i++) {
+                    circleA[i].className = '';
+                }
+                circleA[thisIndex].className = 'hover';
+            }
+
+            // 缓慢移动图片
+            function slow(obj, target, callback) {
+                obj.myInter = setInterval(function () {
+                    var offsetLeft = obj.offsetLeft;
+                    var num = (target - offsetLeft) / 10;
+                    num > 0 ? num = Math.ceil(num) : num = Math.floor(num);
+                    if (offsetLeft == target) {
+                        clearInterval(obj.myInter);
+                        callback && callback();
+                    } else {
+                        obj.style.left = offsetLeft + num + 'px';
+                    }
+                }, 10);
+            }
+
+            antoChange();
+
+            // 左右滑动按钮事件
+            var prev = document.querySelector('.nav.prev');
+            var next = document.querySelector('.nav.next');
+
+            prev.addEventListener('click', function() {
+                if (flag) {
+                    flag = false;
+                    thisIndex--;
+                    if (thisIndex < 0) {
+                        thisIndex = imgListLi.length - 1;
+                    }
+                    slow(imgList, -thisIndex * 1120, function () {
+                        flag = true;
+                    });
+                    circleChange();
+                }
+            });
+
+            next.addEventListener('click', function() {
+                if (flag) {
+                    flag = false;
+                    thisIndex++;
+                    if (thisIndex >= imgListLi.length) {
+                        thisIndex = 0;
+                    }
+                    slow(imgList, -thisIndex * 1120, function () {
+                        flag = true;
+                    });
+                    circleChange();
+                }
+            });
+        }
+
+
+        function showIntroduction(element, text) {
+            document.getElementById('introductionBar').innerText = text;
+            const spans = document.querySelectorAll('.box span');
+            spans.forEach(span => {
+                if (span !== element.querySelector('span')) {
+                    span.style.opacity = '0';
+                } else {
+                    span.style.opacity = '1';
+                }
+            });
+        }
+
+        function resetText(element) {
+            document.getElementById('introductionBar').innerText = '示例文本';
+            const spans = document.querySelectorAll('.box span');
+            spans.forEach(span => {
+                span.style.opacity = '1';
+            });
+        }
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
 </body>
 </html>
