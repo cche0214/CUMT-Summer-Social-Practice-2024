@@ -6,7 +6,6 @@
 
     <title>中国矿业大学·E心向党社会实践</title>
     <style>
-        /* body标签和容器container标签 */
         body {
             line-height: 1.6;
             margin: 0;
@@ -19,15 +18,17 @@
             margin: auto;
             overflow: hidden;
             display: block;
+
+            display: flex;
+    flex-direction: column;
+    align-items: center;
         }
-        /* 头顶header标签栏，有校徽和团队名称 */
         header {
             background: #f4f4f4;
             padding: 20px 0;
             text-align: center;
             height: 106.1px;
         }
-        /* 导航栏CSS样式 */
         nav {
             display: flex;
             justify-content: center;
@@ -40,6 +41,9 @@
             text-decoration: none;
             font-size: 16px;
         }
+        nav a.active {
+            background-color: rgba(173, 216, 230, 0.6); /* 淡蓝色背景 */
+        }
         nav a:hover {
             color: #ff9900;
             text-decoration: none;
@@ -51,7 +55,6 @@
             padding: 12px 0;
             font-size: 14px;
         }
-        /* 内容图片和介绍 */
         header img {
             width: 470px;
             height: 105px;
@@ -70,12 +73,15 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+
+            flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 60px; /* 留出空间给翻页按钮 */
         }
-        
-
-
-
-        .card{
+        .card {
             position: relative;
             width: 240px;
             height: 350px;
@@ -84,56 +90,49 @@
             align-items: flex-end;
             text-align: center;
             color: #f5f5f5;
-            /* 设置阴影效果 */
             box-shadow: 0 1px 1px rgba(0,0,0,0.1),
                         0 2px 2px rgba(0,0,0,0.1),
                         0 4px 4px rgba(0,0,0,0.1),
                         0 8px 8px rgba(0,0,0,0.1),
                         0 16px 16px rgba(0,0,0,0.1);
-            /* 隐藏超出的内容 */
             overflow: hidden;
         }
-        /* 卡片背景图片的样式 */
-        .card::before{
+        .card::before {
             content: "";
             width: 100%;
             height: 110%;
             position: absolute;
             top: 0;
             left: 0;
-            /* 背景图片，具体图片路径在子元素中设置 */
             background-size: cover;
             background-position: 0 0;
-            /* 设置过渡效果 */
             transition: transform 1s cubic-bezier(0.19,1,0.22,1);
         }
-        /* 分别设置每个卡片的背景图片 */
-        .card:nth-child(1)::before{
+        .card:nth-child(1)::before {
             background-image: url(./images/矿大美景1.jpg);
         }
-        .card:nth-child(2)::before{
+        .card:nth-child(2)::before {
             background-image: url(./images/矿大美景2.jpg);
         }
-        .card:nth-child(3)::before{
+        .card:nth-child(3)::before {
             background-image: url(./images/矿大美景3.jpg);
         }
-        .card:nth-child(4)::before{
+        .card:nth-child(4)::before {
             background-image: url(./images/矿大美景4.jpg);
         }
-        .card:nth-child(5)::before{
+        .card:nth-child(5)::before {
             background-image: url(./images/矿大美景1.jpg);
         }
-        .card:nth-child(6)::before{
+        .card:nth-child(6)::before {
             background-image: url(./images/矿大美景2.jpg);
         }
-        .card:nth-child(7)::before{
+        .card:nth-child(7)::before {
             background-image: url(./images/矿大美景3.jpg);
         }
-        .card:nth-child(8)::before{
+        .card:nth-child(8)::before {
             background-image: url(./images/矿大美景4.jpg);
         }
-        /* 遮罩层样式 */
-        .card::after{
+        .card::after {
             content: "";
             display: block;
             width: 100%;
@@ -142,16 +141,13 @@
                 rgba(0,0,0,0) 0%,
                 rgba(0,0,0,0.25) 55%,
                 rgba(0,0,0,0.8) 100%);
-            /* 绝对定位 */
             position: absolute;
             left: 0;
             top: 0;
             transform: translateY(0);
-            /* 设置过渡效果 */
             transition: transform 1.4s cubic-bezier(0.19,1,0.22,1);
         }
-        /* 卡片内容样式 */
-        .card .content{
+        .card .content {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -162,91 +158,150 @@
             transform: translateY(76%);
             transition: transform 0.7s cubic-bezier(0.19,1,0.22,1);
         }
-        /* 卡片标题样式 */
-        .card h2{
-            font-size: 23px;
-            font-weight: bold;
-            top: 16px; /* 距离父容器顶部固定位置 */
-        }
-        /* 卡片文本样式 */
-        .card p{
+        .card h2 {
+    font-size: 20px; /* 减小字体大小，以便显示更多文字 */
+    font-weight: bold;
+    width: calc(100% - 20px); /* 调整宽度，考虑到内边距 */
+    text-align: center; /* 居中对齐标题 */
+    overflow-wrap: break-word; /* 自动换行 */
+    margin: 10px 0; /* 调整外边距以适应卡片布局 */
+    padding: 0 10px; /* 适当的内边距，确保文字不会紧贴边缘 */
+}
+
+
+        .card p {
             font-size: 15px;
-            /* 设置字间距 */
             letter-spacing: 2px;
             width: 80%;
             line-height: 30px;
             margin-top: 25px;
-            /* 文本两端对齐 */
             text-align: justify;
         }
-        /* 按钮样式 */
-        /* 替换按钮样式 */
-.card .button {
-    display: inline-block;
-    cursor: pointer;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 12px 24px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 25px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.card .button:hover {
-    background-color: #000;
-}
-
-        /* 隐藏卡片内容，除标题外的其他元素 */
-        .card .content *:not(h2){
+        .card .button {
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 25px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .card .button:hover {
+            background-color: #000;
+        }
+        .card .content *:not(h2) {
             opacity: 0;
             transform: translateY(20px);
             transition: transform 0.7s cubic-bezier(0.19,1,0.22,1), opacity 0.7s cubic-bezier(0.19,1,0.22,1);
         }
-        /* 卡片悬停时的样式 */
-        .card:hover{
+        .card:hover {
             align-items: center;
         }
-        .card:hover::before{
+        .card:hover::before {
             transform: translateY(-5%);
         }
-        .card:hover::after{
+        .card:hover::after {
             transform: translateY(-50%);
         }
-        .card:hover .content{
+        .card:hover .content {
             transform: translateY(0);
         }
-        .card:hover .content *:not(h2){
+        .card:hover .content *:not(h2) {
             opacity: 1;
             transform: translateY(0);
-            /* 设置过渡效果延迟 */
             transition-delay: 0.1s;
         }
+        
+        .pagination {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .page-arrow {
+            background: rgb(30,50,100);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+        .page-arrow:hover {
+            color: #ff9900;
+        }
+        .pagination-container {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1; /* 确保在卡片之上 */
+}
+.search-container {
+    display: flex;
+    justify-content: center; /* 居中对齐 */
+    margin-bottom: 20px; /* 与下面的内容保持距离 */
+    width: 100%; /* 确保容器宽度足够 */
+}
+
+
+/* 搜索框的样式 */
+.search-container input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 300px; /* 根据需要调整宽度 */
+    margin-right: 10px; /* 与搜索按钮分开 */
+    box-sizing: border-box; /* 确保内边距和边框不影响宽度 */
+}
+
+/* 搜索按钮的样式 */
+.search-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: rgb(30,50,100);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #ff9900;
+}
+
     </style>
 </head>
 <body>
     <header>
         <img src="./images/矿大校徽校名.png" alt="">
-        <!-- 页眉部分 -->
         <span>&nbsp;&nbsp;红色攻城狮 ——“e新向党”实践团</span>
     </header>
     <nav>
-        <!-- 导航栏 -->
         <a href="index.html">首页</a>
         <a href="ChinaMap.html">地图展示</a>
-        <a href="redstoryindex.html">红色故事</a>
+        <a href="redstoryindex.html" class="active">革命故事</a>
         <a href="newsindex.html">实践新闻</a>
         <a href="contractus.html">联系我们</a>
     </nav>  
-    <!-- 红色故事列表 -->
     <div class="container">
         <div class="news-container">
+
+            <div class="search-container">
+                <input type="text" placeholder="请输入搜索内容">
+                <button type="button">搜索</button>
+            </div>
+            
+            
             <div class="card">
                 <div class="content">
-                    <h2>秋收起义</h2>
-                    <p>1927年毛泽东领导的秋收起义，揭开了中国共产党武装斗争的序幕。</p>
+                    <h2>哈尔滨阿萨大大实打实大苏打撒旦大苏打撒旦</h2>
+                    <p>本报告总结了团队在农村调研中的主要发现与建议，重点分析了当地的农业发展状况。</p>
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
@@ -266,45 +321,182 @@
             </div>
             <div class="card">
                 <div class="content">
-                    <h2>西安事变</h2>
-                    <p>1936年张学良、杨虎城发动西安事变，迫使蒋介石停止内战，一致抗日。</p>
+                    <h2>北京</h2>
+                    <p>本报告记录了团队在红色教育基地的参观学习经历，分享了历史教育对青年成长的意义。</p>
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2>平型关大捷</h2>
-                    <p>八路军在抗日战争中取得的首次大捷，极大鼓舞了全国人民的抗战信心。</p>
+                    <h2>石家庄</h2>
+                    <p>团队在环保组织的实践活动中，参与了多项环保项目，报告重点讨论了环保意识的提升。</p>
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2>淮海战役</h2>
-                    <p>解放战争中三大战役之一，中国人民解放军取得决定性胜利，解放华东。</p>
+                    <h2>延安</h2>
+                    <p>报告总结了团队在山区支教活动中的教学经验，探讨了农村教育的现状与挑战。</p>
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2>遵义会议</h2>
-                    <p>1935年中国共产党在遵义召开的会议，确立了毛泽东的领导地位，转折了革命形势。</p>
+                    <h2>枣庄</h2>
+                    <p>本报告记录了团队在科技公司的实习经历，分享了对新技术应用的见解和体会。</p>
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2>重庆谈判</h2>
-                    <p>抗战胜利后毛泽东与蒋介石在重庆进行和平谈判，为争取民主和平而努力。</p>
+                    <h2>济南</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2>西安</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2>商丘</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2>济宁</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2>徐州</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2>合肥</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2>重庆</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2>温岭</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2>长沙</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <h2>南昌</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <h2>台州</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2>广州</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            
+            <div class="pagination-container">
+                <div class="pagination">
+                    <button class="page-arrow" id="prev-page">&lt; 上一页</button>
+                    <span id="page-number">第 1 页</span>
+                    <button class="page-arrow" id="next-page">下一页 &gt;</button>
                 </div>
             </div>
         </div>
     </div>
     
     <div class="footer">
-        <!-- 页脚部分 -->
         <p>联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有</p>
     </div>
+    <script>
+        // 定义每页显示的卡片数（例如：3行 x 4列 = 12个卡片）
+const cardsPerPage = 12; 
+let currentPage = 1; // 当前页数
+
+// 获取所有卡片
+const cards = document.querySelectorAll('.card');
+// 计算总页数
+const totalPages = Math.ceil(cards.length / cardsPerPage);
+
+// 显示指定页码的卡片
+const showPage = (page) => {
+    cards.forEach((card, index) => {
+        card.style.display = 'none'; // 隐藏所有卡片
+        // 显示当前页的卡片
+        if (index >= (page - 1) * cardsPerPage && index < page * cardsPerPage) {
+            card.style.display = 'flex'; // 只显示当前页的卡片
+        }
+    });
+};
+
+// 更新页码显示
+const updatePageNumber = () => {
+    document.getElementById('page-number').textContent = `第 ${currentPage} 页`;
+};
+
+// 上一页按钮点击事件
+document.getElementById('prev-page').addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--; // 页数减少
+        showPage(currentPage); // 显示新的当前页卡片
+        updatePageNumber(); // 更新页码显示
+    }
+});
+
+// 下一页按钮点击事件
+document.getElementById('next-page').addEventListener('click', () => {
+    if (currentPage < totalPages) {
+        currentPage++; // 页数增加
+        showPage(currentPage); // 显示新的当前页卡片
+        updatePageNumber(); // 更新页码显示
+    }
+});
+
+// 初始化显示第一页卡片并设置页码
+showPage(currentPage);
+updatePageNumber();
+
+
+
+    </script>
 </body>
 </html>
