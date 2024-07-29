@@ -38,6 +38,9 @@
             text-decoration: none;
             font-size: 16px;
         }
+        nav a.active {
+            background-color: rgba(173, 216, 230, 0.6); /* 淡蓝色背景 */
+        }
         nav a:hover {
             color: #ff9900;
             text-decoration: none;
@@ -81,6 +84,135 @@
             width: 80px;
             font-weight: bold;
         }
+
+
+        /* 添加的名片样式 */
+        .business-card-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .shell {
+            width: 100%;
+            max-width: 900px; /* 限制宽度 */
+            height: 400px; /* 调整高度 */
+            background: #ffffff;
+            position: relative;
+        }
+        .head {
+            height: 240px; /* 调整高度 */
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        /* 第一个名片的背景 */
+        .business-card-container:nth-of-type(1) .head::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: url("./images/矿大美景2.jpg");
+        background-size: cover;
+        z-index: -1;
+        transform: skewY(-3deg);
+        transform-origin: 0 0;
+        }
+    .business-card-container:nth-of-type(2) .head::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: url("./images/矿大美景3.jpg");
+        background-size: cover;
+        z-index: -1;
+        transform: skewY(-3deg);
+        transform-origin: 0 0;
+    }
+        .cover {
+            position: absolute;
+            top: 80px; /* 调整位置 */
+            left: 55px;
+            width: 180px; /* 调整大小 */
+            z-index: 3;
+            border-radius: 500px;
+            border: 10px #fff solid;
+            box-shadow: 0 5px 10px #00000065;
+        }
+        .data {
+            padding: 120px 0 0 220px; /* 调整位置 */
+            text-shadow: 0 0 20px #000;
+        }
+        .data .title1 {
+            color: white;
+            font-size: 40px; /* 调整大小 */
+            font: 900 40px '';
+            margin-bottom: 5px;
+            position: relative;
+            left: 55px;
+        }
+        .data .title1 span {
+            position: absolute;
+            top: 25px;
+            margin-left: 12px;
+            background: #ffe44c;
+            border-radius: 5px;
+            color: #000000;
+            font-size: 14px;
+            padding: 0px 4px;
+        }
+        .data .title2 {
+            position:relative;
+            color: #fff;
+            font: 500 24px '';
+            left: 55px;
+        }
+        .foot {
+            line-height: 26px;
+            color: #444;
+        }
+        .tags {
+            padding-left: 30px;
+            padding-top: 60px; /* 调整位置 */
+            width: 250px;
+            float: left;
+            text-align: center;
+        }
+        .tag {
+            background: rgb(149, 178, 255);
+            color: #fff;
+            border-radius: 10px;
+            padding: 3px 8px;
+            font-size: 14px;
+            margin-right: 4px;
+            line-height: 35px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .tag:hover {
+            background: #eee4ad;
+            color: #444;
+        }
+        .introduce {
+            position:relative;
+            bottom: 10px;
+            padding: 0 0 0 20px;
+            width: 600px; /* 调整宽度 */
+            float: left;
+            text-indent: 2em;
+        }
+        .container h1 {
+            text-align: center;
+            color: rgb(30,50,100);
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 3px;
+        }
+        .container hr {
+            margin: 0;
+            height: 2px;
+            background-color:rgb(30,50,100);
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -93,24 +225,66 @@
         <!-- 导航栏 -->
         <a href="index.html">首页</a>
         <a href="ChinaMap.html">地图展示</a>
-        <a href="redstoryindex.html">红色故事</a>
+        <a href="redstoryindex.html">革命故事</a>
         <a href="newsindex.html">实践新闻</a>
-        <a href="newsindex.html">联系我们</a>
+        <a href="newsindex.html" class="active">联系我们</a>
     </nav>
     <div class="container">
         <div class="contact-container">
-            <h2>联系我们</h2>
-            <div class="contact-item">
-                <span>电话：</span><span>13832379532</span>
+            <h1>实践团主要成员</h1>
+            <hr>
+            <!-- 添加的个人名片容器 -->
+            <div class="business-card-container">
+                <div class="shell">
+                    <img src="./images/smile.jpg" alt="" class="cover">
+                    <div class="head">
+                        <div class="data">
+                            <div class="title1">姓名<span>负责职务</span></div>
+                            <div class="title2">负责工作介绍</div>
+                        </div>
+                    </div>
+                    <div class="foot">
+                        <div class="tags">
+                            <a href="https://www.cumt.edu.cn/" class="tag">TEL:13823279532</a>
+                            <a href="https://www.cumt.edu.cn/" class="tag">QQ:3106201882</a>
+                            <a href="https://www.cumt.edu.cn/" class="tag">Email:08232716@cumt.edu.cn</a>
+                        </div>            
+                        <div class="introduce">
+                            <p>
+                                （个人简介）中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一，设有国家批准的研究生院。学校现坐落于素有“五省通衢”之称的国家历史文化名城——江苏省徐州市，有文昌和南湖两个校园，占地4200余亩，校舍建筑面积156万平方米，馆藏图书文献2000多万册（件）。
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item">
-                <span>邮箱：</span><span>08232716@cumt.edu.cn</span>
+    
+            <div class="business-card-container">
+                <div class="shell">
+                    <img src="./images/mouse.jpg" alt="" class="cover">
+                    <div class="head">
+                        <div class="data">
+                            <div class="title1">XXX<span>负责职务</span></div>
+                            <div class="title2">负责工作介绍</div>
+                        </div>
+                    </div>
+                    <div class="foot">
+                        <div class="tags">
+                            <a href="https://www.cumt.edu.cn/" class="tag">TEL:13823279532</a>
+                            <a href="https://www.cumt.edu.cn/" class="tag">QQ:3106201882</a>
+                            <a href="https://www.cumt.edu.cn/" class="tag">Email:08232716@cumt.edu.cn</a>
+                        </div>            
+                        <div class="introduce">
+                            <p>
+                                （个人简介）中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一，设有国家批准的研究生院。学校现坐落于素有“五省通衢”之称的国家历史文化名城——江苏省徐州市，有文昌和南湖两个校园，占地4200余亩，校舍建筑面积156万平方米，馆藏图书文献2000多万册（件）。
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item">
-                <span>QQ：</span><span>123456789</span>
-            </div>
+            <!-- 个人名片结束 -->
         </div>
     </div>
+    
     <div class="footer">
         <!-- 页脚部分 -->
         <p>联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有</p>
