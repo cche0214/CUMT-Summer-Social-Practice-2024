@@ -43,6 +43,9 @@
             text-decoration: none;
             font-size: 16px;
         }
+        nav a.active {
+            background-color: rgba(173, 216, 230, 0.6); /* 淡蓝色背景 */
+        }
         nav a:hover {
             color: #ff9900;
             text-decoration: none;
@@ -138,8 +141,8 @@
     </header>
     <nav>
         <a href="index.html">首页</a>
-        <a href="ChinaMap.html">地图展示</a>
-        <a href="redstoryindex.html">红色故事</a>
+        <a href="ChinaMap.html" class="active">地图展示</a>
+        <a href="redstoryindex.html">革命故事</a>
         <a href="newsindex.html">实践新闻</a>
         <a href="contractus.html">联系我们</a>
     </nav>
@@ -250,7 +253,7 @@
                     type: "effectScatter",
                     coordinateSystem: "geo",
                     data: dataValue, // 数据
-                    symbolSize: 6, // 涟漪大小
+                    symbolSize: 4, // 涟漪大小
                     showEffectOn: "render", // 涟漪效应
                     rippleEffect: {
                         brushType: "stroke",
