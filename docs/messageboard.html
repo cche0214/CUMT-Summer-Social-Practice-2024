@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>中国矿业大学·E心向党社会实践</title>
+    <style>
+        /* body标签和容器container标签 */
+        body {
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        /* 头顶header标签栏，有校徽和团队名称 */
+        header {
+            background: #f4f4f4;
+            padding: 20px 0;
+            text-align: center;
+            height: 106.1px;
+        }
+        /* 导航栏CSS样式 */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgb(30,50,100);
+            padding: 5px 0;
+        }
+        nav a {
+            color: #fff;
+            padding: 10px 30px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav a.active {
+            background-color: rgba(173, 216, 230, 0.6); /* 淡蓝色背景 */
+        }
+        nav a:hover {
+            color: #ff9900;
+            text-decoration: none;
+        }
+       
+       
+        .footer {
+            background: rgb(30,50,100);
+            color: #fff;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 14px;
+        }
+        /* 内容图片和介绍 */
+        header img {
+            width: 470px;
+            height: 105px;
+            display: inline;
+        }
+        header span {
+            color: rgb(30,50,100);
+            font-size: 50px;
+            font-family: 楷体;
+        }
+
+
+        .screen {
+    overflow: hidden;
+    position: relative;
+    height: calc(100vh); /* 保留发送框的高度 */
+    background: url('./images/矿大美景1.jpg'); /* 默认背景图片 */
+    background-size: cover; /* 背景图片填充 */
+    background-position: center; /* 背景图片居中 */
+    background-repeat: no-repeat; /* 背景图片不重复 */
+    transition: background-image 1s ease-in-out; /* 背景图切换的过渡效果 */
+}
+
+.screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.5), /* 背景图上层的颜色和透明度 */
+        rgba(255, 255, 255, 0.5)
+    );
+    z-index: -1; /* 确保伪元素在内容后面 */
+}
+
+
+
+        .s_show div {
+            position: absolute;
+            font-size: 18px;
+            font-weight: bold;
+        }
+/* 修改 .send 的样式 */
+.send {
+    position: absolute;
+    bottom: 0;
+    width: 100%; /* 占满整个屏幕宽度 */
+    height: 80px; /* 保持发送框的高度 */
+    line-height: 80px; /* 垂直居中内容 */
+    background-color: rgba(30, 50, 100, 0.6); /* 设置背景色 */
+    text-align: center; /* 中心对齐 */
+    box-sizing: border-box; /* 包括内边距在内计算宽度 */
+}
+
+/* 修改 .input 的样式 */
+.input {
+    display: flex; /* 使用flex布局 */
+    justify-content: center; /* 水平居中对齐 */
+    align-items: center; /* 垂直居中对齐 */
+    height: 100%; /* 高度占满父元素 */
+}
+
+/* 修改 .text 的样式 */
+.text {
+    padding: 10px 0; /* 内边距 */
+    font-size: 16px; /* 字体大小 */
+    border: 1px solid #ddd; /* 边框颜色 */
+    border-radius: 5px; /* 圆角 */
+    width: 300px; /* 固定宽度 */
+    box-sizing: border-box; /* 包括内边距在内计算宽度 */
+    margin: 0; /* 消除外边距 */
+    height: 40px; /* 固定高度 */
+    line-height: 20px; /* 垂直居中文本 */
+}
+
+
+/* 修改 .btn 的样式 */
+.btn {
+    padding: 10px 20px; /* 调整内边距 */
+    font-size: 16px; /* 字体大小 */
+    background-color: rgb(30,50,100); /* 背景颜色 */
+    color: #fff; /* 字体颜色 */
+    cursor: pointer; /* 鼠标指针样式 */
+    border-radius:5px; /* 圆角 */
+    border: none; /* 移除边框 */
+    margin-left: 10px; /* 消除外边距 */
+    box-sizing: border-box; /* 包括内边距在内计算宽度 */
+    height: 40px; /* 固定高度，与 .text 一致 */
+    line-height: 20px; /* 垂直居中文本 */
+}
+
+
+/* 鼠标悬停时按钮字体变红 */
+.btn:hover {
+    color:  #ff9900; /* 字体变红 */
+}
+
+
+        .magictime.twisterInUp {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    color: black; /* 弹幕颜色固定为黑色 */
+    white-space: nowrap; /* 保持文本不换行 */
+    padding: 5px; /* 内边距 */
+    box-sizing: border-box; /* 包含边框和内边距 */
+    background: rgba(255, 255, 255, 0.6); /* 半透明背景，方便阅读 */
+    border-radius: 5px; /* 边角圆润 */
+}
+.magictime.twisterInUp:hover {
+            animation-play-state: paused;
+        }
+/* 添加动画效果 */
+@keyframes twisterInUp {
+    0% {
+        transform: translateY(100%) rotate(0deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* 应用动画 */
+.magictime.twisterInUp {
+    animation: twisterInUp 1s ease-out;
+}
+     
+
+.magictime.paused {
+    animation-play-state: paused;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./images/矿大校徽校名.png" alt="">
+        <!-- 页眉部分 -->
+        <span>&nbsp;&nbsp;红色攻城狮 ——“e新向党”实践团</span>
+    </header>
+    <nav>
+        <!-- 导航栏 -->
+        <a href="index.html">首页</a>
+        <a href="ChinaMap.html">地图展示</a>
+        <a href="redstoryindex.html">红色故事</a>
+        <a href="newsindex.html" >实践新闻</a>
+        <a href="messageboard.html" class="active">感悟留言</a>
+        <a href="contractus.html">联系我们</a>
+    </nav>
+    <div class="container">
+        
+        <div class="screen">
+            
+            <div class="send">
+                <div class="input clearfix">
+                    <input type="text" class="text" placeholder="  请输入留言内容">
+                    <div class="btn">留言</div>
+                </div>
+            </div>
+    
+            <div class="s_show">
+                <div class="magictime twisterInUp">
+                    社会实践，让我理解了团队合作的重要性。
+                </div>
+     
+                <div class="magictime twisterInUp">
+                    实践活动让我更深刻地认识了社会责任。
+                </div>
+     
+                <div class="magictime twisterInUp">
+                    参与劳动实践，学会了坚持和奉献。
+                </div>
+     
+                <div class="magictime twisterInUp">
+                    社会实践让我走出校园，接触真实生活。
+                </div>
+     
+                <div class="magictime twisterInUp">
+                    实践过程中，感受到了劳动的辛苦与快乐。
+                </div>
+     
+                <div class="magictime twisterInUp">
+                    在实践中，体验到了不同的职业精神。
+                </div>
+     
+                <div class="magictime twisterInUp">
+                    通过社会实践，我学会了时间管理。
+                </div>
+     
+                <div class="magictime twisterInUp">
+                    实践活动让我更加理解了社会的多样性。
+                </div>
+                <div class="magictime twisterInUp">
+                    劳动实践让我更懂得尊重每一个岗位。
+                </div>
+                <div class="magictime twisterInUp">
+                    实践中学会了如何解决实际问题。
+                </div>
+                <div class="magictime twisterInUp">
+                    亲身体验劳动，感悟人生不同阶段的意义。
+                </div>
+                <div class="magictime twisterInUp">
+                    实践让我更深入了解了社会基层状况。
+                </div>
+                <div class="magictime twisterInUp">
+                    社会实践增强了我的责任感和使命感。
+                </div>
+                <div class="magictime twisterInUp">
+                    实践活动让我更加珍惜学习机会。
+                </div>
+                <div class="magictime twisterInUp">
+                    通过社会实践，我增长了见识和技能。
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <!-- 页脚部分 -->
+        <p>联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有</p>
+    </div>
+
+<script>
+const images = [
+    './images/矿大美景1.jpg',
+    './images/矿大美景2.jpg',
+    './images/矿大美景3.jpg',
+];
+
+let currentIndex = 0;
+const changeInterval = 5000; // 每5秒切换一次
+
+function changeBackground() {
+    const screenElement = document.querySelector('.screen');
+    screenElement.style.backgroundImage = `url(${images[currentIndex]})`;
+    currentIndex = (currentIndex + 1) % images.length;
+}
+
+// 初始化时设置一次背景
+window.onload = function() {
+    changeBackground(); 
+    setInterval(changeBackground, changeInterval);
+};
+</script>
+
+
+    <script>
+       // 定义网格大小
+const GRID_SIZE = 100; // 网格单元的宽高（可根据需要调整）
+
+// 创建网格
+let grid = [];
+
+// 初始化网格
+function initGrid() {
+    const screenWidth = document.documentElement.clientWidth;
+    const screenHeight = document.documentElement.clientHeight;
+    const numRows = Math.ceil(screenHeight / GRID_SIZE);
+    const numCols = Math.ceil(screenWidth / GRID_SIZE);
+    grid = Array.from({ length: numRows }, () => Array(numCols).fill(false));
+}
+
+// 获取网格位置
+function getGridPosition(top, left) {
+    const row = Math.floor(top / GRID_SIZE);
+    const col = Math.floor(left / GRID_SIZE);
+    return [row, col];
+}
+
+// 检查位置是否可用
+function isPositionAvailable(top, left, objWidth, objHeight) {
+    const [startRow, startCol] = getGridPosition(top, left);
+    const [endRow, endCol] = getGridPosition(top + objHeight, left + objWidth);
+    for (let row = startRow; row <= endRow; row++) {
+        for (let col = startCol; col <= endCol; col++) {
+            if (grid[row] && grid[row][col]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// 占用网格位置
+function occupyGrid(top, left, objWidth, objHeight) {
+    const [startRow, startCol] = getGridPosition(top, left);
+    const [endRow, endCol] = getGridPosition(top + objHeight, left + objWidth);
+    for (let row = startRow; row <= endRow; row++) {
+        for (let col = startCol; col <= endCol; col++) {
+            if (grid[row]) {
+                grid[row][col] = true;
+            }
+        }
+    }
+}
+
+// 清除网格位置
+function clearGrid(top, left, objWidth, objHeight) {
+    const [startRow, startCol] = getGridPosition(top, left);
+    const [endRow, endCol] = getGridPosition(top + objHeight, left + objWidth);
+    for (let row = startRow; row <= endRow; row++) {
+        for (let col = startCol; col <= endCol; col++) {
+            if (grid[row]) {
+                grid[row][col] = false;
+            }
+        }
+    }
+}
+
+// 初始化弹幕
+function init(obj) {
+    const screenHeight = document.documentElement.clientHeight;
+    const maxTop = screenHeight - oSend.offsetHeight - obj.offsetHeight;
+    const screenWidth = document.documentElement.clientWidth;
+    const maxLeft = screenWidth - obj.offsetWidth;
+
+    let top, left;
+    let attempts = 0;
+
+    // 尝试找到一个可用的位置
+    do {
+        top = maxTop * Math.random();
+        left = maxLeft * Math.random();
+        attempts++;
+        // 如果尝试次数过多，则使用默认位置
+        if (attempts > 100) {
+            top = maxTop * Math.random();
+            left = maxLeft * Math.random();
+            break;
+        }
+    } while (!isPositionAvailable(top, left, obj.offsetWidth, obj.offsetHeight));
+
+    obj.style.top = top + "px";
+    obj.style.left = left + "px";
+    occupyGrid(top, left, obj.offsetWidth, obj.offsetHeight);
+    obj.setAttribute('data-speed', Math.random() + 1);
+    obj.setAttribute('data-moving', 'true'); // 标记为正在移动
+    move(obj);
+}
+
+// 移动函数
+function move(obj) {
+    const speed = parseFloat(obj.getAttribute('data-speed'));
+    let maxLeft = parseFloat(obj.style.left);
+
+    function animate() {
+        if (obj.getAttribute('data-moving') === 'true') {
+            maxLeft -= speed;
+            if (maxLeft > -obj.offsetWidth) {
+                obj.style.left = maxLeft + "px";
+                requestAnimationFrame(animate);
+            } else {
+                clearGrid(parseFloat(obj.style.top), parseFloat(obj.style.left), obj.offsetWidth, obj.offsetHeight);
+                init(obj);
+            }
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
+// 防抖函数，减少频繁的事件处理调用
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        if (timeout) {
+            cancelAnimationFrame(timeout);
+        }
+        timeout = requestAnimationFrame(() => func.apply(this, args));
+    };
+}
+
+// 处理鼠标悬停事件
+const debouncedMouseOver = debounce(function (e) {
+    if (e.target.classList.contains('magictime')) {
+        var obj = e.target;
+        obj.setAttribute('data-moving', 'false'); // 暂停动画
+    }
+}, 0);
+
+// 处理鼠标离开事件
+const debouncedMouseOut = debounce(function (e) {
+    if (e.target.classList.contains('magictime')) {
+        var obj = e.target;
+        obj.setAttribute('data-moving', 'true'); // 恢复动画
+        move(obj);
+    }
+}, 0);
+
+var aShowList = document.querySelectorAll(".s_show div");
+var oShow = document.querySelector(".s_show");
+var oSend = document.querySelector(".send");
+var oBtn = document.querySelector(".btn");
+var oText = document.querySelector(".text");
+
+// 添加事件监听
+oShow.addEventListener('mouseover', debouncedMouseOver);
+oShow.addEventListener('mouseout', debouncedMouseOut);
+
+// 按钮点击事件
+oBtn.onclick = function () {
+    var oDiv = document.createElement("div");
+    oDiv.innerHTML = oText.value;
+    oDiv.className = "magictime twisterInUp"; // 确保弹幕使用 CSS 中定义的样式
+    oShow.appendChild(oDiv);
+    init(oDiv);
+    oText.value = "";
+};
+
+// 初始化已存在的弹幕
+for (var i = 0; i < aShowList.length; i++) {
+    init(aShowList[i]);
+}
+
+            </script>
+</body>
+</html>
