@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>中国矿业大学·E心向党社会实践</title>
+    <link rel="icon" href="./images/中国矿业大学_校徽.png" type="image/png">
+
     <style>
         /* body标签和容器container标签 */
         body {
@@ -399,6 +401,84 @@
     line-height: 1.6; /* 行高设置，让段落更易读 */
     font-family: 宋体;
         }
+
+        .practice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.images {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.images img {
+    border: 2px solid rgb(30,50,100);
+    width: 700px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.stats p {
+    font-family: 宋体;
+    font-size: 18px; /* 字体大小增大 */
+    color: white;
+    text-indent: 2em;
+}
+.number-container {
+    border-radius: 10px;
+    background-color: rgb(30,50,100);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 在number-container中左右对齐 */
+    gap: 5px;
+    padding: 10px;
+    width: 90%;
+    max-width: 600px;
+}
+
+.number-container:nth-child(2n+1) {
+    background-color: rgba(30,50,100,0.6);
+}
+
+.number-container:nth-child(2) {
+    cursor: pointer; /* 设置光标为可点击样式 */
+}
+.number-container:nth-child(3) {
+    cursor: pointer; /* 设置光标为可点击样式 */
+}
+.number-container:nth-child(4) {
+    cursor: pointer; /* 设置光标为可点击样式 */
+}
+.description {
+    font-family: 宋体;
+    font-size: 18px; /* 字体大小增大 */
+    color: white;
+    flex: 1; /* 占据左侧的空间 */
+    text-align: left; /* 左对齐 */
+}
+
+.number-display {
+    font-size: 26px; /* 字体大小略微增大 */
+    font-weight: bold;
+    color: white;
+    flex-shrink: 0; /* 避免数字被压缩 */
+    text-align: right; /* 右对齐 */
+}
+
     </style>
 </head>
 <body>
@@ -530,7 +610,33 @@
                 </div>
             </div>
 
-            <div class="heading">本次实践</div><hr class="heading-hr">
+            <div class="heading">本次实践</div>
+<hr class="heading-hr">
+
+<div class="practice">
+    <div class="images">
+        <img src="./images/矿大美景1.jpg" alt="Image 1">
+        <img src="./images/矿大美景2.jpg" alt="Image 2">
+    </div>
+    <div class="stats">
+        <div class="number-container" style="border: 2px solid rgb(30,50,100);">
+            <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为</p>
+        </div>
+        <div class="number-container">
+            <span class="description">累计实践地区</span>
+            <span class="number-display" data-end="86">???</span>
+        </div>
+        <div class="number-container">
+            <span class="description">累计实践地区</span>
+            <span class="number-display" data-end="50">???</span>
+        </div>
+        <div class="number-container">
+            <span class="description">累计实践地区</span>
+            <span class="number-display" data-end="97">???</span>
+        </div>
+    </div>
+</div>
+    
 
         </div>
     </div>
@@ -672,5 +778,53 @@
             window.location.href = url;
         }
     </script>
+
+
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+    var containers = document.querySelectorAll('.number-container');
+
+    containers.forEach(function(container) {
+        container.addEventListener('click', function() {
+            var numberDisplay = container.querySelector('.number-display');
+            if (!numberDisplay) return;
+
+            // 初始值固定为1
+            var start = 1;
+            var end = parseInt(numberDisplay.getAttribute('data-end'), 10);
+
+            // 移除初始的“???”显示
+            numberDisplay.textContent = '';
+
+            // 开始数字平滑增加
+            addNumber(start, end, numberDisplay);
+        });
+    });
+});
+
+/**
+ * addNumber函数：实现从start值平滑增加到end值的效果
+ * @param {number} start - 起始值
+ * @param {number} end - 结束值
+ * @param {HTMLElement} element - 显示结果的HTML元素
+ */
+function addNumber(start, end, element) {
+    var i = start;
+    var interval;
+
+    if (i < end) {
+        interval = setInterval(function() {
+            i += 2; // 每次增加的值
+            if (i > end) {
+                clearInterval(interval);
+                element.textContent = end.toLocaleString();
+            } else {
+                element.textContent = i.toLocaleString();
+            }
+        }, 10); // 控制增加速度
+    }
+}
+
+</script>
 </body>
 </html>
