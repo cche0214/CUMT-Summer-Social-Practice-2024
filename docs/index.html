@@ -227,17 +227,20 @@
         .team-intro {
             background: #fff;
             width: 100%;
-            height: 100vh; /* 高度与轮播图一致 */
+            height: 95vh; /* 高度与轮播图一致 */
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden; /* 确保内容不会超出容器 */
             flex-wrap: wrap; /* 换行显示 */
+            
         }
         .team-intro img {
             width: 45%;
             height: auto;
             margin-left: 20px;
+            border-radius: 15px;
+            border: 2px solid rgb(30,50,100);
         }
         .team-intro .intro-text {
             width: 100%;
@@ -245,6 +248,10 @@
             box-sizing: border-box;
             margin: 10px;
             text-indent: 2em;
+            border: 2px solid rgb(30,50,100);
+            border-radius: 15px;
+            background-color: rgba(30, 50, 100,0.4);
+            color: white;
         }
 
         .shell {
@@ -301,12 +308,96 @@
 
         .introduction-bar {
             width: 100%;
-            color: black;
+            font-family: 宋体;
             text-align: center;
-            padding: 10px;
-            margin-top: 20px;
+            margin-top: 25px;
+            margin-bottom: 18px;
             font-size: 24px;
+            border: 2px solid rgb(30,50,100);
+            border-radius: 15px;
+            background-color: rgba(30, 50, 100,0.4);
+            color: white;
+        }
+
+        .wrap {
+    width: 80%;
+    max-width: 1200px; /* 和.container的最大宽度保持一致 */
+    margin: 0 auto; /* 水平居中 */
+    position: relative;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 垂直居中内容 */
+}
+.boxheart {
+    position: relative;
+    width: 100%;
+    max-width: 1000px; /* 限制宽度 */
+    height: 150px; /* 修改为固定高度 */
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.left, .right {
+    position: relative;
+    width: 45%; /* 修改为百分比以保持响应式 */
+    height: 150px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid rgb(30,50,100);
+}
+        .left img {
+            width: 100%;
+            height: 150px;
+            border-radius: 15px;
+        }
+        .right img {
+            width: 100%;
+            height: 150px;
+            border-radius: 15px;
+        }
+        .boxheart:nth-child(even) .left{
+            background-color: rgba(30, 50, 100,0.4);
+            box-shadow: 0 0 10px rgba(0,0,0,.3);
+        }
+        .boxheart:nth-child(odd) .right{
+            background-color: rgba(30, 50, 100,0.4);
+            box-shadow: 0 0 10px rgba(0,0,0,.3);
+        }
+        .center {
+    width: 10%; /* 调整为百分比，和left、right保持一致 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+}
+        .center>span{
+            width: 120px;
             border-radius: 10px;
+            text-align:center;
+            font: 400 19px '';
+            line-height: 50px;
+            color: white;
+            background-color: rgb(30,50,100);
+            font-family: 宋体;
+        }
+
+        .left p {
+            text-indent: 2em; /* 开头空两字 */
+        font-weight: normal; /* 不加粗 */
+    color: white; /* 字体颜色为黑色 */
+    font-size: 18px; /* 字号稍大，可根据需要调整 */
+    line-height: 1.6; /* 行高设置，让段落更易读 */
+    font-family: 宋体;
+        }
+
+        .right p {
+            text-indent: 2em; /* 开头空两字 */
+        font-weight: normal; /* 不加粗 */
+    color: white; /* 字体颜色为黑色 */
+    font-size: 18px; /* 字号稍大，可根据需要调整 */
+    line-height: 1.6; /* 行高设置，让段落更易读 */
+    font-family: 宋体;
         }
     </style>
 </head>
@@ -320,6 +411,7 @@
         <a href="ChinaMap.html">地图展示</a>
         <a href="redstoryindex.html">革命故事</a>
         <a href="newsindex.html">实践新闻</a>
+        <a href="messageboard.html">感悟留言</a>
         <a href="contractus.html">联系我们</a>
     </nav>
     <div class="container">
@@ -359,8 +451,7 @@
                 <img src="./images/矿大美景3.jpg" alt="团队照片3">
                 <img src="./images/矿大美景4.jpg" alt="团队照片4">
                 <div class="intro-text">
-                    <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一，设有国家批准的研究生院。学校现坐落于素有“五省通衢”之称的国家历史文化名城——江苏省徐州市，有文昌和南湖两个校园，占地4200余亩，校舍建筑面积156万平方米，馆藏图书文献2000多万册（件）。学校现有2个国家“双一流”建设学科、1个一级学科国家重点学科，8个二级学科国家重点学科，1个国家重点（培育）学科；7个江苏省优势学科、7个江苏省重点学科；18个一级学科博士点，2个专业学位博士点，36个一级学科硕士点，20个专业学位硕士点。学校设23个学院，74个本科专业，有全日制普通本科生23600余人，各类博士、硕士研究生13300余人，留学生680余人，继续教育学生10000余人；有教职工3450余人；有8个国家级科研平台，50个省部级科研平台，1个国家大学科技园；另设有1个独立学院徐海学院。</p>
-                    
+                    <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一，设有国家批准的研究生院。学校现坐落于素有“五省通衢”之称的国家历史文化名城——江苏省徐州市，有文昌和南湖两个校园，占地4200余亩，校舍建筑面积156万平方米，馆藏图书文献2000多万册（件）。学校现有2个国家“双一流”建设学科、1个一级学科国家重点学科，8个二级学科国家重点学科，1个国家重点（培育）学科；7个江苏省优势学科、7个江苏省重点学科；18个一级学科博士点，2个专业学位博士点，36个一级学科硕士点，20个专业学位硕士点。学校设23个学院，74个本科专业，有全日制普通本科生23600余人，各类博士、硕士研究生13300余人，留学生680余人，继续教育学生10000余人；有教职工3450余人；另设有徐海学院。</p>
                 </div>
             </div>
 
@@ -399,6 +490,48 @@
             <div class="introduction-bar" id="introductionBar">示例文本</div>
 
             <div class="heading">团队初心</div><hr class="heading-hr">
+
+            <div class="wrap">
+                <div class="boxheart">
+                    <div class="left"><img src="./images/矿大美景1.jpg" alt=""></div>
+                    
+                    <div class="center">
+                        <span>
+                            服务社会
+                        </span>
+                    </div>
+                    <div class="right">
+                        <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一。</p>
+                    </div>
+                </div>
+        
+                <div class="boxheart">
+                    <div class="left">
+                        <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一。</p>
+                    </div>
+                    <div class="center">
+                        <span>
+                            助人为乐
+                        </span>
+                    </div>
+                    <div class="right"><img src="./images/矿大美景2.jpg" alt=""></div>
+                </div>
+        
+                <div class="boxheart">
+                    <div class="left"><img src="./images/矿大美景3.jpg" alt=""></div>
+                    <div class="center">
+                        <span>
+                            弘扬美德
+                        </span>
+                    </div>
+                    <div class="right">
+                        <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="heading">本次实践</div><hr class="heading-hr">
+
         </div>
     </div>
     <div class="footer">
