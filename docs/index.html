@@ -3,489 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国矿业大学·E心向党社会实践</title>
+
+    <title>中国矿业大学·E新向党实践团</title>
+
+    <script src="./js/indexcarouselimage.js"></script>
+    <script src="./js/indexnumber.js"></script>
+
     <link rel="icon" href="./images/中国矿业大学_校徽.png" type="image/png">
-
-    <style>
-        /* body标签和容器container标签 */
-        body {
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            max-width: 1200px;
-            margin: auto;
-            overflow: hidden;
-        }
-        /* 头顶header标签栏，有校徽和团队名称 */
-        header {
-            background: #f4f4f4;
-            padding: 20px 0;
-            text-align: center;
-            height: 106.1px;
-        }
-        /* 导航栏CSS样式 */
-        nav {
-            display: flex;
-            justify-content: center;
-            background: rgb(30,50,100);
-            padding: 5px 0;
-        }
-        nav a {
-            color: #fff;
-            padding: 10px 30px;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        nav a.active {
-            background-color: rgba(173, 216, 230, 0.6); /* 淡蓝色背景 */
-        }
-
-        nav a:hover {
-            color: #ff9900;
-            text-decoration: none;
-        }
-        /* 内容CSS样式 */
-        .content {
-            margin: 20px;
-            background: #fff;
-            padding: 10px;
-            color: #333;
-            font-size: 18px;
-        }
-        .content h1 {
-            text-align: center;
-            color: rgb(30,50,100);
-            font-size: 28px;
-            margin-top: 0;
-            margin-bottom: 3px;
-        }
-        .content hr {
-            margin: 0;
-            height: 2px;
-            background-color:rgb(30,50,100);
-            border: none;
-        }
-        /* 内容文本CSS样式 */
-        .text {
-            font-family: 宋体;
-            font-size: 18px;
-            text-indent: 2em;
-        }
-        .form {
-            font-family: 宋体;
-            font-size: 16px;
-            font-weight: 700;
-        }
-        .info {
-            font-size: 14px;
-            color: #777;
-            text-align: center;
-            margin: 5px;
-        }
-        .footer {
-            background: rgb(30,50,100);
-            color: #fff;
-            text-align: center;
-            padding: 12px 0;
-            font-size: 14px;
-        }
-        /* 内容图片和介绍 */
-        header img {
-            width: 470px;
-            height: 105px;
-            display: inline;
-        }
-        header span {
-            color: rgb(30,50,100);
-            font-size: 50px;
-            font-family: 楷体;
-        }
-        .textimg {
-            display: block;
-            margin: auto;
-        }
-        .textexp {
-            display: flex;
-            justify-content: center;
-            font-size: 14px;
-            color: #777;
-        }
-
-        /* 轮播图样式 */
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-        .banner {
-            width: 1120px;
-            margin: 0 auto;
-            border: none;
-            height: 500px;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        .imgList {
-            border: none;
-            list-style: none;
-            position: absolute;
-            display: flex;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-        }
-        .imgList img {
-            width: 1120px;
-            height: 500px;
-        }
-        .imgList li {
-            position: relative;
-            flex: 0 0 1120px;
-        }
-        /* 添加标题样式，左下角 */
-        .imgTitle {
-            position: absolute;
-            left: 15px;
-            bottom: 15px;
-            color: white;
-            background-color: gray;
-            padding: 2px 5px;
-            border-radius: 5px;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            font-family: 宋体;
-        }
-        /* 修改圆点位置，右下角 */
-        .circle {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            display: flex;
-        }
-        .circle a {
-            width: 15px;
-            height: 15px;
-            background: gray;
-            display: block;
-            border-radius: 50%;
-            opacity: .6;
-            margin-left: 5px;
-            cursor: pointer;
-            border: 2px solid white;
-        }
-        .circle a.hover {
-            background: white;
-            opacity: 1;
-        }
-        /* 添加左右滑动按钮样式 */
-        .nav {
-            position: absolute;
-            top: 50%;
-            width: auto;
-            margin-top: -22px;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            cursor: pointer;
-            opacity: .6;
-            background-color: gray;
-        }
-        .nav.prev {
-            left: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        .nav.next {
-            right: 0;
-            border-radius: 0 3px 3px 0;
-        }
-        .nav:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* 实践团介绍部分CSS样式 */
-        .heading {
-            text-align: center;
-            color: rgb(30,50,100);
-            font-size: 28px;
-            margin-top: 0;
-            margin-bottom: 3px;
-            font-weight: 700;
-        }
-        .heading-hr {
-            margin: 0;
-            height: 2px;
-            background-color:rgb(30,50,100);
-            border: none;
-        }
-        .team-intro {
-            background: #fff;
-            width: 100%;
-            height: 95vh; /* 高度与轮播图一致 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden; /* 确保内容不会超出容器 */
-            flex-wrap: wrap; /* 换行显示 */
-            
-        }
-        .team-intro img {
-            width: 45%;
-            height: auto;
-            margin-left: 20px;
-            border-radius: 15px;
-            border: 2px solid rgb(30,50,100);
-        }
-        .team-intro .intro-text {
-            width: 100%;
-            font-family: 宋体;
-            box-sizing: border-box;
-            margin: 10px;
-            text-indent: 2em;
-            border: 2px solid rgb(30,50,100);
-            border-radius: 15px;
-            background-color: rgba(30, 50, 100,0.4);
-            color: white;
-        }
-
-        .shell {
-            margin-top: 20px;
-            width: 100%;
-            height: 600px;
-            display: flex;
-            flex-direction: row;
-            position: relative;
-        }
-
-        .box {
-            flex: 1;
-            overflow: hidden;
-            transition: .5s;
-            margin: 0 20px;
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, .5);
-            border-radius: 20px;
-            border: 10px solid #fff;
-            background-color: #fff;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .box>img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: .5s;
-        }
-
-        .box>span {
-            font: 200 45px '优设标题黑';
-            text-align: center;
-            height: 15%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
-            transition: opacity 0.5s;
-        }
-
-        .box:hover {
-            flex-basis:50%;
-        }
-
-        .box:hover>img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .introduction-bar {
-            width: 100%;
-            font-family: 宋体;
-            text-align: center;
-            margin-top: 25px;
-            margin-bottom: 18px;
-            font-size: 24px;
-            border: 2px solid rgb(30,50,100);
-            border-radius: 15px;
-            background-color: rgba(30, 50, 100,0.4);
-            color: white;
-        }
-
-        .wrap {
-    width: 80%;
-    max-width: 1200px; /* 和.container的最大宽度保持一致 */
-    margin: 0 auto; /* 水平居中 */
-    position: relative;
-    top: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 垂直居中内容 */
-}
-.boxheart {
-    position: relative;
-    width: 100%;
-    max-width: 1000px; /* 限制宽度 */
-    height: 150px; /* 修改为固定高度 */
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: space-between;
-}
-.left, .right {
-    position: relative;
-    width: 45%; /* 修改为百分比以保持响应式 */
-    height: 150px;
-    border-radius: 15px;
-    text-align: center;
-    border: 2px solid rgb(30,50,100);
-}
-        .left img {
-            width: 100%;
-            height: 150px;
-            border-radius: 15px;
-        }
-        .right img {
-            width: 100%;
-            height: 150px;
-            border-radius: 15px;
-        }
-        .boxheart:nth-child(even) .left{
-            background-color: rgba(30, 50, 100,0.4);
-            box-shadow: 0 0 10px rgba(0,0,0,.3);
-        }
-        .boxheart:nth-child(odd) .right{
-            background-color: rgba(30, 50, 100,0.4);
-            box-shadow: 0 0 10px rgba(0,0,0,.3);
-        }
-        .center {
-    width: 10%; /* 调整为百分比，和left、right保持一致 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 10px;
-}
-        .center>span{
-            width: 120px;
-            border-radius: 10px;
-            text-align:center;
-            font: 400 19px '';
-            line-height: 50px;
-            color: white;
-            background-color: rgb(30,50,100);
-            font-family: 宋体;
-        }
-
-        .left p {
-            text-indent: 2em; /* 开头空两字 */
-        font-weight: normal; /* 不加粗 */
-    color: white; /* 字体颜色为黑色 */
-    font-size: 18px; /* 字号稍大，可根据需要调整 */
-    line-height: 1.6; /* 行高设置，让段落更易读 */
-    font-family: 宋体;
-        }
-
-        .right p {
-            text-indent: 2em; /* 开头空两字 */
-        font-weight: normal; /* 不加粗 */
-    color: white; /* 字体颜色为黑色 */
-    font-size: 18px; /* 字号稍大，可根据需要调整 */
-    line-height: 1.6; /* 行高设置，让段落更易读 */
-    font-family: 宋体;
-        }
-
-        .practice {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.images {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.images img {
-    border: 2px solid rgb(30,50,100);
-    width: 700px;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.stats {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
-}
-
-.stats p {
-    font-family: 宋体;
-    font-size: 18px; /* 字体大小增大 */
-    color: white;
-    text-indent: 2em;
-}
-.number-container {
-    border-radius: 10px;
-    background-color: rgb(30,50,100);
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* 在number-container中左右对齐 */
-    gap: 5px;
-    padding: 10px;
-    width: 90%;
-    max-width: 600px;
-}
-
-.number-container:nth-child(2n+1) {
-    background-color: rgba(30,50,100,0.6);
-}
-
-.number-container:nth-child(2) {
-    cursor: pointer; /* 设置光标为可点击样式 */
-}
-.number-container:nth-child(3) {
-    cursor: pointer; /* 设置光标为可点击样式 */
-}
-.number-container:nth-child(4) {
-    cursor: pointer; /* 设置光标为可点击样式 */
-}
-.description {
-    font-family: 宋体;
-    font-size: 18px; /* 字体大小增大 */
-    color: white;
-    flex: 1; /* 占据左侧的空间 */
-    text-align: left; /* 左对齐 */
-}
-
-.number-display {
-    font-size: 26px; /* 字体大小略微增大 */
-    font-weight: bold;
-    color: white;
-    flex-shrink: 0; /* 避免数字被压缩 */
-    text-align: right; /* 右对齐 */
-}
-
-    </style>
+    <link rel="stylesheet" href="./css/framework.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
+
 <body>
     <header>
         <img src="./images/矿大校徽校名.png" alt="">
         <span>&nbsp;&nbsp;红色攻城狮 ——“e新向党”实践团</span>
     </header>
+
     <nav>
         <a href="index.html" class="active">首页</a>
         <a href="ChinaMap.html">地图展示</a>
@@ -493,11 +27,13 @@
         <a href="newsindex.html">实践新闻</a>
         <a href="messageboard.html">感悟留言</a>
         <a href="contractus.html">联系我们</a>
+        <a href="comments.html">留下意见</a>
     </nav>
-    <div class="container">
-        <div class="content">
 
-            <!-- 主要内容部分 -->
+    <div class="container">
+
+        <div class="index">
+
             <div class="banner">
                 <ul class="imgList">
                     <li>
@@ -524,14 +60,21 @@
 
             <div class="heading">实践团介绍</div><hr class="heading-hr">
 
-            <!-- 添加实践团介绍部分 -->
             <div class="team-intro">
                 <img src="./images/矿大美景1.jpg" alt="团队照片1">
                 <img src="./images/矿大美景2.jpg" alt="团队照片2">
                 <img src="./images/矿大美景3.jpg" alt="团队照片3">
                 <img src="./images/矿大美景4.jpg" alt="团队照片4">
                 <div class="intro-text">
-                    <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一，设有国家批准的研究生院。学校现坐落于素有“五省通衢”之称的国家历史文化名城——江苏省徐州市，有文昌和南湖两个校园，占地4200余亩，校舍建筑面积156万平方米，馆藏图书文献2000多万册（件）。学校现有2个国家“双一流”建设学科、1个一级学科国家重点学科，8个二级学科国家重点学科，1个国家重点（培育）学科；7个江苏省优势学科、7个江苏省重点学科；18个一级学科博士点，2个专业学位博士点，36个一级学科硕士点，20个专业学位硕士点。学校设23个学院，74个本科专业，有全日制普通本科生23600余人，各类博士、硕士研究生13300余人，留学生680余人，继续教育学生10000余人；有教职工3450余人；另设有徐海学院。</p>
+                    <p>
+                        中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。
+                        学校为全国首批具有博士和硕士授予权的高校之一，设有国家批准的研究生院。
+                        学校现坐落于素有“五省通衢”之称的国家历史文化名城——江苏省徐州市，有文昌和南湖两个校园，占地4200余亩，校舍建筑面积156万平方米，馆藏图书文献2000多万册（件）。
+                        学校现有2个国家“双一流”建设学科、1个一级学科国家重点学科，8个二级学科国家重点学科，1个国家重点（培育）学科；7个江苏省优势学科、7个江苏省重点学科；
+                        18个一级学科博士点，2个专业学位博士点，36个一级学科硕士点，20个专业学位硕士点。
+                        学校设23个学院，74个本科专业，有全日制普通本科生23600余人，各类博士、硕士研究生13300余人，留学生680余人，继续教育学生10000余人；
+                        有教职工3450余人；另设有徐海学院。
+                    </p>
                 </div>
             </div>
 
@@ -574,20 +117,29 @@
             <div class="wrap">
                 <div class="boxheart">
                     <div class="left"><img src="./images/矿大美景1.jpg" alt=""></div>
-                    
                     <div class="center">
                         <span>
                             服务社会
                         </span>
                     </div>
                     <div class="right">
-                        <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一。</p>
+                        <p>
+                            中国矿业大学是教育部直属的全国重点高校，
+                            是教育部、应急管理部与江苏省人民政府共建高校，
+                            先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。
+                            学校为全国首批具有博士和硕士授予权的高校之一。
+                        </p>
                     </div>
                 </div>
         
                 <div class="boxheart">
                     <div class="left">
-                        <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一。</p>
+                        <p>
+                            中国矿业大学是教育部直属的全国重点高校，
+                            是教育部、应急管理部与江苏省人民政府共建高校，
+                            先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。
+                            学校为全国首批具有博士和硕士授予权的高校之一。
+                        </p>
                     </div>
                     <div class="center">
                         <span>
@@ -605,226 +157,56 @@
                         </span>
                     </div>
                     <div class="right">
-                        <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一。</p>
+                        <p>
+                            中国矿业大学是教育部直属的全国重点高校，
+                            是教育部、应急管理部与江苏省人民政府共建高校，
+                            先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。
+                            学校为全国首批具有博士和硕士授予权的高校之一。
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="heading">本次实践</div>
-<hr class="heading-hr">
+            <div class="heading">本次实践</div><hr class="heading-hr">
 
-<div class="practice">
-    <div class="images">
-        <img src="./images/矿大美景1.jpg" alt="Image 1">
-        <img src="./images/矿大美景2.jpg" alt="Image 2">
+            <div class="practice">
+                <div class="images">
+                    <img src="./images/矿大美景1.jpg" alt="Image 1">
+                    <img src="./images/矿大美景2.jpg" alt="Image 2">
+                </div>
+                <div class="stats">
+                    <div class="number-container" style="border: 2px solid rgb(30,50,100);">
+                    <p>
+                        中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，
+                        先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。
+                        学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。
+                        学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。
+                        学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。
+                        学校为全国首批具有博士和硕士授予权的高校之一。学校为
+                    </p>
+                    </div>
+                    <div class="number-container">
+                        <span class="description">累计实践地区</span>
+                        <span class="number-display" data-end="86">???</span>
+                    </div>
+                    <div class="number-container">
+                        <span class="description">累计实践地区</span>
+                        <span class="number-display" data-end="50">???</span>
+                    </div>
+                    <div class="number-container">
+                        <span class="description">累计实践地区</span>
+                        <span class="number-display" data-end="97">???</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="stats">
-        <div class="number-container" style="border: 2px solid rgb(30,50,100);">
-            <p>中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为全国首批具有博士和硕士授予权的高校之一。学校为</p>
-        </div>
-        <div class="number-container">
-            <span class="description">累计实践地区</span>
-            <span class="number-display" data-end="86">???</span>
-        </div>
-        <div class="number-container">
-            <span class="description">累计实践地区</span>
-            <span class="number-display" data-end="50">???</span>
-        </div>
-        <div class="number-container">
-            <span class="description">累计实践地区</span>
-            <span class="number-display" data-end="97">???</span>
-        </div>
-    </div>
-</div>
-    
 
-        </div>
-    </div>
     <div class="footer">
-        <p>联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有</p>
+        <p>
+            联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有
+        </p>
     </div>
     
-    <script>
-        window.onload = function () {
-            var imgList = document.querySelector('.imgList');
-            var circle = document.querySelector('.circle');
-            var thisIndex = 0;
-            var imgListLi = imgList.children;
-            var circleA = circle.children;
-            var flag = true;
-
-            // 动态生成底部圆点，并添加到 circle 中
-            for (var i = 0; i < imgList.children.length; i++) {
-                var aNode = document.createElement('a');
-                aNode.setAttribute('index', i);
-                if (i == 0) {
-                    aNode.className = 'hover';
-                }
-                circle.appendChild(aNode);
-            }
-
-            // 圆点点击事件
-            circle.addEventListener('click', function (e) {
-                if (flag) {
-                    flag = false;
-                    if (e.target.nodeName != 'A') {
-                        return false;
-                    }
-                    thisIndex = e.target.getAttribute('index');
-                    slow(imgList, -thisIndex * 1120, function () {
-                        flag = true;
-                    });
-                    circleChange();
-                }
-            });
-
-            // 自动轮播
-            function antoChange() {
-                setInterval(function () {
-                    if (flag) {
-                        flag = false;
-                        if (thisIndex >= circleA.length) {
-                            thisIndex = 0;
-                        }
-                        slow(imgList, -thisIndex * 1120, function () {
-                            flag = true;
-                        });
-                        circleChange();
-                        thisIndex++;
-                    }
-                }, 3000);
-            }
-
-            // 更新圆点状态
-            function circleChange() {
-                for (var i = 0; i < circleA.length; i++) {
-                    circleA[i].className = '';
-                }
-                circleA[thisIndex].className = 'hover';
-            }
-
-            // 缓慢移动图片
-            function slow(obj, target, callback) {
-                obj.myInter = setInterval(function () {
-                    var offsetLeft = obj.offsetLeft;
-                    var num = (target - offsetLeft) / 10;
-                    num > 0 ? num = Math.ceil(num) : num = Math.floor(num);
-                    if (offsetLeft == target) {
-                        clearInterval(obj.myInter);
-                        callback && callback();
-                    } else {
-                        obj.style.left = offsetLeft + num + 'px';
-                    }
-                }, 10);
-            }
-
-            antoChange();
-
-            // 左右滑动按钮事件
-            var prev = document.querySelector('.nav.prev');
-            var next = document.querySelector('.nav.next');
-
-            prev.addEventListener('click', function() {
-                if (flag) {
-                    flag = false;
-                    thisIndex--;
-                    if (thisIndex < 0) {
-                        thisIndex = imgListLi.length - 1;
-                    }
-                    slow(imgList, -thisIndex * 1120, function () {
-                        flag = true;
-                    });
-                    circleChange();
-                }
-            });
-
-            next.addEventListener('click', function() {
-                if (flag) {
-                    flag = false;
-                    thisIndex++;
-                    if (thisIndex >= imgListLi.length) {
-                        thisIndex = 0;
-                    }
-                    slow(imgList, -thisIndex * 1120, function () {
-                        flag = true;
-                    });
-                    circleChange();
-                }
-            });
-        }
-
-
-        function showIntroduction(element, text) {
-            document.getElementById('introductionBar').innerText = text;
-            const spans = document.querySelectorAll('.box span');
-            spans.forEach(span => {
-                if (span !== element.querySelector('span')) {
-                    span.style.opacity = '0';
-                } else {
-                    span.style.opacity = '1';
-                }
-            });
-        }
-
-        function resetText(element) {
-            document.getElementById('introductionBar').innerText = '示例文本';
-            const spans = document.querySelectorAll('.box span');
-            spans.forEach(span => {
-                span.style.opacity = '1';
-            });
-        }
-
-        function navigateTo(url) {
-            window.location.href = url;
-        }
-    </script>
-
-
-<script>
-   document.addEventListener("DOMContentLoaded", function() {
-    var containers = document.querySelectorAll('.number-container');
-
-    containers.forEach(function(container) {
-        container.addEventListener('click', function() {
-            var numberDisplay = container.querySelector('.number-display');
-            if (!numberDisplay) return;
-
-            // 初始值固定为1
-            var start = 1;
-            var end = parseInt(numberDisplay.getAttribute('data-end'), 10);
-
-            // 移除初始的“???”显示
-            numberDisplay.textContent = '';
-
-            // 开始数字平滑增加
-            addNumber(start, end, numberDisplay);
-        });
-    });
-});
-
-/**
- * addNumber函数：实现从start值平滑增加到end值的效果
- * @param {number} start - 起始值
- * @param {number} end - 结束值
- * @param {HTMLElement} element - 显示结果的HTML元素
- */
-function addNumber(start, end, element) {
-    var i = start;
-    var interval;
-
-    if (i < end) {
-        interval = setInterval(function() {
-            i += 2; // 每次增加的值
-            if (i > end) {
-                clearInterval(interval);
-                element.textContent = end.toLocaleString();
-            } else {
-                element.textContent = i.toLocaleString();
-            }
-        }, 10); // 控制增加速度
-    }
-}
-
-</script>
 </body>
 </html>
