@@ -1,0 +1,44 @@
+/* body标签和容器container标签 */
+body {
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+}
+/* 头顶header标签栏，有校徽和团队名称 */
+header {
+    background: #f4f4f4;
+    padding: 20px 0;
+    text-align: center;
+    height: 100px;
+}
+
+/* 导航栏CSS样式 */
+nav {
+    display: flex;
+    justify-content: center;
+    background: rgb(30,50,100);
+    padding: 5px 0;
+}
+nav a {
+    color:white;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 16px;
+}
+nav a.active {
+    background-color: rgba(173, 216, 230, 0.6); /* 淡蓝色背景 */
+}
+nav a:hover {
+    color: #ff9900;
+}
+.footer {
+    background: rgb(30,50,100);
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+}

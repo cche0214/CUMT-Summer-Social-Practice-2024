@@ -1,0 +1,59 @@
+header img {
+    width: 470px;
+    height: 105px;
+    display: inline;
+}
+header span {
+    color: rgb(30,50,100);
+    font-size: 50px;
+    font-family: 楷体;
+}
+/* new或redstory的CSS样式 */
+.content {
+    margin: 20px;
+    background: #fff;
+    padding: 10px;
+    color: #333;
+    font-size: 18px;
+}
+.heading {
+    text-align: center;
+    color: rgb(30,50,100);
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 3px;
+    font-weight: 700;
+}
+.heading-hr {
+    margin: 0;
+    height: 2px;
+    background-color:rgb(30,50,100);
+    border: none;
+}
+.text {
+    font-family: 宋体;
+    font-size: 18px;
+    text-indent: 2em;
+}
+.form {
+    font-family: 宋体;
+    font-size: 16px;
+    font-weight: 700;
+}
+.info {
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+    margin:5px;
+}
+/* 文本图片和解释文字的CSS样式 */
+.textimg {
+    display: block;
+    margin: auto;
+}
+.textexp {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    color: #777;
+}
