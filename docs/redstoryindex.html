@@ -4,284 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>中国矿业大学·E心向党社会实践</title>
-    <style>
-        body {
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            max-width: 1200px;
-            margin: auto;
-            overflow: hidden;
-            display: block;
-
-            display: flex;
-    flex-direction: column;
-    align-items: center;
-        }
-        header {
-            background: #f4f4f4;
-            padding: 20px 0;
-            text-align: center;
-            height: 106.1px;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background: rgb(30,50,100);
-            padding: 5px 0;
-        }
-        nav a {
-            color: #fff;
-            padding: 10px 30px;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        nav a.active {
-            background-color: rgba(173, 216, 230, 0.6); /* 淡蓝色背景 */
-        }
-        nav a:hover {
-            color: #ff9900;
-            text-decoration: none;
-        }
-        .footer {
-            background: rgb(30,50,100);
-            color: #fff;
-            text-align: center;
-            padding: 12px 0;
-            font-size: 14px;
-        }
-        header img {
-            width: 470px;
-            height: 105px;
-            display: inline;
-        }
-        header span {
-            color: rgb(30,50,100);
-            font-size: 50px;
-            font-family: 楷体;
-        }
-        .news-container {
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-
-            flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    position: relative;
-    padding-bottom: 60px; /* 留出空间给翻页按钮 */
-        }
-        .card {
-            position: relative;
-            width: 240px;
-            height: 350px;
-            margin: 10px;
-            display: flex;
-            align-items: flex-end;
-            text-align: center;
-            color: #f5f5f5;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.1),
-                        0 2px 2px rgba(0,0,0,0.1),
-                        0 4px 4px rgba(0,0,0,0.1),
-                        0 8px 8px rgba(0,0,0,0.1),
-                        0 16px 16px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .card::before {
-            content: "";
-            width: 100%;
-            height: 110%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-size: cover;
-            background-position: 0 0;
-            transition: transform 1s cubic-bezier(0.19,1,0.22,1);
-        }
-        .card:nth-child(1)::before {
-            background-image: url(./images/矿大美景1.jpg);
-        }
-        .card:nth-child(2)::before {
-            background-image: url(./images/矿大美景2.jpg);
-        }
-        .card:nth-child(3)::before {
-            background-image: url(./images/矿大美景3.jpg);
-        }
-        .card:nth-child(4)::before {
-            background-image: url(./images/矿大美景4.jpg);
-        }
-        .card:nth-child(5)::before {
-            background-image: url(./images/矿大美景1.jpg);
-        }
-        .card:nth-child(6)::before {
-            background-image: url(./images/矿大美景2.jpg);
-        }
-        .card:nth-child(7)::before {
-            background-image: url(./images/矿大美景3.jpg);
-        }
-        .card:nth-child(8)::before {
-            background-image: url(./images/矿大美景4.jpg);
-        }
-        .card::after {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 200%;
-            background: linear-gradient(to bottom,
-                rgba(0,0,0,0) 0%,
-                rgba(0,0,0,0.25) 55%,
-                rgba(0,0,0,0.8) 100%);
-            position: absolute;
-            left: 0;
-            top: 0;
-            transform: translateY(0);
-            transition: transform 1.4s cubic-bezier(0.19,1,0.22,1);
-        }
-        .card .content {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-            padding: 16px 8px;
-            transform: translateY(76%);
-            transition: transform 0.7s cubic-bezier(0.19,1,0.22,1);
-        }
-        .card h2 {
-    font-size: 20px; /* 减小字体大小，以便显示更多文字 */
-    font-weight: bold;
-    width: calc(100% - 20px); /* 调整宽度，考虑到内边距 */
-    text-align: center; /* 居中对齐标题 */
-    overflow-wrap: break-word; /* 自动换行 */
-    margin: 10px 0; /* 调整外边距以适应卡片布局 */
-    padding: 0 10px; /* 适当的内边距，确保文字不会紧贴边缘 */
-}
-
-
-        .card p {
-            font-size: 15px;
-            letter-spacing: 2px;
-            width: 80%;
-            line-height: 30px;
-            margin-top: 25px;
-            text-align: justify;
-        }
-        .card .button {
-            display: inline-block;
-            cursor: pointer;
-            border: none;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            padding: 12px 24px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-top: 25px;
-            text-decoration: none;
-            text-align: center;
-        }
-        .card .button:hover {
-            background-color: #000;
-        }
-        .card .content *:not(h2) {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: transform 0.7s cubic-bezier(0.19,1,0.22,1), opacity 0.7s cubic-bezier(0.19,1,0.22,1);
-        }
-        .card:hover {
-            align-items: center;
-        }
-        .card:hover::before {
-            transform: translateY(-5%);
-        }
-        .card:hover::after {
-            transform: translateY(-50%);
-        }
-        .card:hover .content {
-            transform: translateY(0);
-        }
-        .card:hover .content *:not(h2) {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.1s;
-        }
-        
-        .pagination {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .page-arrow {
-            background: rgb(30,50,100);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 0 10px;
-            border-radius: 5px;
-        }
-        .page-arrow:hover {
-            color: #ff9900;
-        }
-        .pagination-container {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 1; /* 确保在卡片之上 */
-}
-.search-container {
-    display: flex;
-    justify-content: center; /* 居中对齐 */
-    margin-bottom: 20px; /* 与下面的内容保持距离 */
-    width: 100%; /* 确保容器宽度足够 */
-}
-
-
-/* 搜索框的样式 */
-.search-container input[type="text"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 300px; /* 根据需要调整宽度 */
-    margin-right: 10px; /* 与搜索按钮分开 */
-    box-sizing: border-box; /* 确保内边距和边框不影响宽度 */
-}
-
-/* 搜索按钮的样式 */
-.search-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    background-color: rgb(30,50,100);
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.search-container button:hover {
-    background-color: #ff9900;
-}
-
-    </style>
+    <title>中国矿业大学·E新向党实践团</title>
+    <link rel="icon" href="./images/中国矿业大学_校徽.png" type="image/png">
+    <link rel="stylesheet" href="./css/framework.css">
+    <link rel="stylesheet" href="./css/redstoryindex.css">
 </head>
+
 <body>
+
     <header>
         <img src="./images/矿大校徽校名.png" alt="">
         <span>&nbsp;&nbsp;红色攻城狮 ——“e新向党”实践团</span>
     </header>
+
     <nav>
         <a href="index.html">首页</a>
         <a href="ChinaMap.html">地图展示</a>
@@ -289,30 +24,33 @@
         <a href="newsindex.html">实践新闻</a>
         <a href="messageboard.html">感悟留言</a>
         <a href="contractus.html">联系我们</a>
-    </nav>  
+    </nav> 
+
     <div class="container">
-        <div class="news-container">
+
+        <div class="redstoryindex">
 
             <div class="search-container">
                 <input type="text" placeholder="请输入搜索内容">
                 <button type="button">搜索</button>
             </div>
             
-            
             <div class="card">
                 <div class="content">
                     <h2>哈尔滨阿萨大大实打实大苏打撒旦大苏打撒旦</h2>
                     <p>本报告总结了团队在农村调研中的主要发现与建议，重点分析了当地的农业发展状况。</p>
-                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                    <a href="redstorys\redstory1.html" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>红军长征</h2>
                     <p>红军长征是中国革命的伟大转折点，谱写了壮丽的历史篇章。</p>
-                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                    <a href="redstorys\redstory1.html" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>南昌起义</h2>
@@ -320,6 +58,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>北京</h2>
@@ -327,6 +66,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>石家庄</h2>
@@ -334,6 +74,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>延安</h2>
@@ -341,6 +82,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>枣庄</h2>
@@ -348,6 +90,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>济南</h2>
@@ -355,6 +98,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>西安</h2>
@@ -362,6 +106,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>商丘</h2>
@@ -369,6 +114,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>济宁</h2>
@@ -376,6 +122,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>徐州</h2>
@@ -383,6 +130,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>合肥</h2>
@@ -390,6 +138,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>重庆</h2>
@@ -397,6 +146,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>温岭</h2>
@@ -404,6 +154,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>长沙</h2>
@@ -427,6 +178,7 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
+
             <div class="card">
                 <div class="content">
                     <h2>广州</h2>
@@ -434,20 +186,31 @@
                     <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
                 </div>
             </div>
-            
+
+            <div class="card">
+                <div class="content">
+                    <h2>广州</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+
             <div class="pagination-container">
                 <div class="pagination">
                     <button class="page-arrow" id="prev-page">&lt; 上一页</button>
                     <span id="page-number">第 1 页</span>
                     <button class="page-arrow" id="next-page">下一页 &gt;</button>
                 </div>
-            </div>
+            </div>    
+
         </div>
+
     </div>
     
     <div class="footer">
         <p>联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有</p>
     </div>
+
     <script>
         // 定义每页显示的卡片数（例如：3行 x 4列 = 12个卡片）
 const cardsPerPage = 12; 
@@ -496,8 +259,7 @@ document.getElementById('next-page').addEventListener('click', () => {
 showPage(currentPage);
 updatePageNumber();
 
-
-
     </script>
+
 </body>
 </html>
