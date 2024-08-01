@@ -1,0 +1,19 @@
+comments:
+  path: "comments" # 评论数据的保存路径（相对项目根目录）
+  filename: "{options.id}.json" # 使用 JSON 格式
+  format: "json"
+  fields:
+    message:
+      type: "string"
+      required: true
+      label: "Comment"
+  branch: "main" # 保存评论数据的分支
+  moderation: true # 是否需要审核
+  commitMessage: "New comment in {options.id}" # 提交信息格式
+  generatedFields:
+    date:
+      type: "date"
+      options:
+        format: "iso8601"
+    anonymousId:
+      type: "uuid"
