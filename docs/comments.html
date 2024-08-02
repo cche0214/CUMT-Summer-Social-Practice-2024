@@ -1,57 +1,52 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>中国矿业大学·E新向党实践团</title>
 
-    <title>中国矿业大学·E新向党实践团</title>
-    <link rel="icon" href="./images/中国矿业大学_校徽.png" type="image/png">
-    <link rel="stylesheet" href="./css/framework.css">
-    <link rel="stylesheet" href="./css/contractus.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-
+  <link rel="stylesheet" href="./css/comments.css">
+  <link rel="stylesheet" href="./css/framework.css">
+  
 </head>
-
 <body>
+  <!-- 页面其他内容 -->
+  <header>
+    <img src="./images/矿大校徽校名.png" alt="">
+    <span>&nbsp;&nbsp;红色攻城狮 ——“e新向党”实践团</span>
+  </header>
 
-    <header>
-        <img src="./images/矿大校徽校名.png" alt="">
-        <span>&nbsp;&nbsp;红色攻城狮 ——“e新向党”实践团</span>
-    </header>
+  <nav>
+    <a href="index.html">首页</a>
+    <a href="ChinaMap.html">地图展示</a>
+    <a href="redstoryindex.html">革命故事</a>
+    <a href="newsindex.html">实践新闻</a>
+    <a href="messageboard.html">感悟心得</a>
+    <a href="contractus.html">关于本站</a>
+    <a href="comments.html" class="active">意见留言</a>
+  </nav>
+  <!-- 评论容器 -->
+  <div id="gitalk-container"></div>
 
-    <nav>
-        <a href="index.html">首页</a>
-        <a href="ChinaMap.html">地图展示</a>
-        <a href="redstoryindex.html">革命故事</a>
-        <a href="newsindex.html">实践新闻</a>
-        <a href="messageboard.html">感悟留言</a>
-        <a href="newsindex.html" class="active">联系我们</a>
-    </nav>
+  <div class="footer">
+    <p>
+        联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有
+    </p>
+</div>
 
-    <div class="container">
+  <script>
+    const gitalk = new Gitalk({
+      clientID: 'Ov23ct32Klst4n5NyZJj', // 替换为你的 Client ID
+      clientSecret: '6e7f25f8450305cdca7ab062ee94122558909023', // 替换为你的 Client Secret
+      repo: 'CUMT-Summer-Social-Practice-2024', // 你的 GitHub 仓库名
+      owner: 'cche0214', // 你的 GitHub 用户名
+      admin: ['cche0214'], // 管理员用户名
+      id: location.pathname, // 确保唯一性且长度小于 50
+      distractionFreeMode: false // 是否启用全屏模式
+    });
+    gitalk.render('gitalk-container');
+  </script>
 
-    </div>
-
-    <div id="gitalk-container"></div>
-
-    <!-- 引入 GitTalk 的 JavaScript 文件 -->
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script>
-      const gitalk = new Gitalk({
-        clientID: 'Ov23ct32Klst4n5NyZJj', // 替换为你的 Client ID
-        clientSecret: '4cf490f35b1fe4ec425a45aafbb98a21dc5bf812', // 替换为你的 Client Secret
-        repo: 'CUMT-Summer-Social-Practice-2024', // 你的 GitHub 仓库名
-        owner: 'cche0214', // 你的 GitHub 用户名
-        admin: ['cche0214'], // 管理员用户名
-        id: location.pathname, // 确保唯一性且长度小于 50
-        distractionFreeMode: false // 是否启用全屏模式
-      });
-      gitalk.render('gitalk-container');
-    </script>
-
-    <div class="footer">
-        <p>联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有</p>
-    </div>
 </body>
 </html>
