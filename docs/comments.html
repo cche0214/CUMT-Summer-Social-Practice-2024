@@ -35,18 +35,48 @@
     </p>
 </div>
 
-  <script>
-    const gitalk = new Gitalk({
-      clientID: 'Ov23ct32Klst4n5NyZJj', // 替换为你的 Client ID
-      clientSecret: '6e7f25f8450305cdca7ab062ee94122558909023', // 替换为你的 Client Secret
-      repo: 'CUMT-Summer-Social-Practice-2024', // 你的 GitHub 仓库名
-      owner: 'cche0214', // 你的 GitHub 用户名
-      admin: ['cche0214'], // 管理员用户名
-      id: location.pathname, // 确保唯一性且长度小于 50
-      distractionFreeMode: false // 是否启用全屏模式
-    });
-    gitalk.render('gitalk-container');
-  </script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Ov23ct32Klst4n5NyZJj', // 替换为你的 Client ID
+    clientSecret: '', // 通过无服务器函数处理
+    repo: 'CUMT-Summer-Social-Practice-2024', // 你的 GitHub 仓库名
+    owner: 'cche0214', // 你的 GitHub 用户名
+    admin: ['cche0214'], // 管理员用户名
+    id: location.pathname, // 确保唯一性且长度小于 50
+    distractionFreeMode: false // 是否启用全屏模式
+  });
+  gitalk.render('gitalk-container');
+
+  // 使用无服务器函数来处理 GitHub OAuth 流程
+  async function authenticateWithGitHub() {
+    try {
+      const code = new URL(window.location.href).searchParams.get("code");
+      if (code) {
+        const response = await fetch('netlify/functions/comment.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ code }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+          console.log('Access Token:', data.access_token);
+          // 设置 Gitalk 的访问令牌
+          gitalk.accessToken = data.access_token;
+          gitalk.render('gitalk-container');
+        } else {
+          console.error('Error:', data.error);
+        }
+      }
+    } catch (error) {
+      console.error('Network Error:', error);
+    }
+  }
+
+  // 调用 authenticateWithGitHub 函数来处理 OAuth 过程
+  authenticateWithGitHub();
+</script>
 
 </body>
 </html>
