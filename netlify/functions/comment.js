@@ -1,68 +1,49 @@
-exports.handler = async (event) => {
-  console.log('Received event:', event); // 输出整个事件对象
+const clientID = 'Ov23ct32Klst4n5NyZJj';
+const redirectUri = 'https://cche0214.github.io/CUMT-Summer-Social-Practice-2024/comments.html';
 
-  if (event.httpMethod === 'POST') {
-    try {
-      console.log('Request body:', event.body); // 输出请求体
+function initiateGitHubLogin() {
+    const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+    window.location.href = authUrl;
+}
 
-      if (!event.body || event.body.trim() === '') {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ error: 'Request body is empty' }),
-        };
-      }
+async function authenticateWithGitHub() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
 
-      let parsedBody;
-      try {
-        parsedBody = JSON.parse(event.body);
-      } catch (parseError) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ error: 'Invalid JSON format' }),
-        };
-      }
-
-      const { code } = parsedBody;
-
-      if (!code) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ error: 'Authorization code is required' }),
-        };
-      }
-
-      const response = await axios.post('https://github.com/login/oauth/access_token', {
-        client_id: process.env.GITHUB_CLIENT_ID,
-        client_secret: process.env.GITHUB_CLIENT_SECRET,
-        code,
-      }, {
-        headers: {
-          Accept: 'application/json',
-        },
-      });
-
-      if (response.data.error) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ error: response.data.error_description }),
-        };
-      }
-
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ access_token: response.data.access_token }),
-      };
-    } catch (error) {
-      console.error('Error:', error);
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: 'Internal Server Error' }),
-      };
+    if (code) {
+        try {
+            const response = await fetch('/.netlify/functions/comment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Access Token:', data.access_token);
+                // 设置 Gitalk 的访问令牌
+                const gitalk = new Gitalk({
+                    clientID: 'Ov23ct32Klst4n5NyZJj',
+                    clientSecret: '', // 使用无服务器函数处理
+                    repo: 'CUMT-Summer-Social-Practice-2024',
+                    owner: 'cche0214',
+                    admin: ['cche0214'],
+                    id: location.pathname,
+                    distractionFreeMode: false,
+                    accessToken: data.access_token,
+                });
+                gitalk.render('gitalk-container');
+            } else {
+                console.error('Error:', data.error);
+            }
+        } catch (error) {
+            console.error('Network Error:', error);
+        }
+    } else {
+        console.error('No authorization code found');
     }
-  } else {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: 'Method Not Allowed' }),
-    };
-  }
-};
+}
+
+document.getElementById('loginButton').addEventListener('click', initiateGitHubLogin);
+authenticateWithGitHub();
