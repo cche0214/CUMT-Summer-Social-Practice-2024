@@ -6,6 +6,7 @@
 
     <title>中国矿业大学·E新向党实践团</title>
     <link rel="icon" href="./images/中国矿业大学_校徽.png" type="image/png">
+
     <style>
         /* body标签和容器container标签 */
         body {
@@ -156,20 +157,24 @@
 }
 
 
-        .magictime.twisterInUp {
+.magictime.twisterInUp {
     position: absolute;
     font-size: 18px;
     font-weight: bold;
     color: black; /* 弹幕颜色固定为黑色 */
-    white-space: nowrap; /* 保持文本不换行 */
+    white-space: normal; /* 允许文本换行 */
+    word-wrap: break-word; /* 长单词换行 */
+    max-width: 500px; /* 设置最大宽度，可以根据需要调整 */
     padding: 5px; /* 内边距 */
     box-sizing: border-box; /* 包含边框和内边距 */
     background: rgba(255, 255, 255, 0.6); /* 半透明背景，方便阅读 */
     border-radius: 5px; /* 边角圆润 */
 }
+
 .magictime.twisterInUp:hover {
-            animation-play-state: paused;
-        }
+    animation-play-state: paused;
+}
+
 /* 添加动画效果 */
 @keyframes twisterInUp {
     0% {
@@ -196,6 +201,129 @@
             padding: 0px;
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+        .banner {
+    width: 1120px;
+    margin: 0 auto;
+    height: 730px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.heading {
+    text-align: center;
+    color: rgb(30,50,100);
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 3px;
+    font-weight: 700;
+}
+
+.heading-hr {
+    margin: 0;
+    height: 2px;
+    background-color: rgb(30,50,100);
+    border: none;
+}
+
+.index {
+    margin-top: 20px;
+    background: #fff;
+    color: #333;
+    font-size: 18px;
+}
+
+.scroll-container {
+    height: 700px;
+    overflow: hidden;
+    position: relative;
+}
+
+.scroll-content {
+    position: absolute;
+    width: 100%;
+    animation: scroll 20s linear infinite;
+}
+
+.scroll-content p {
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    color: #333;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+
+
+
+
+
+
+
+@keyframes move {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -400px;
+    }
+}
+
+#wrapper {
+    height: 700px;
+    position: relative;
+    margin-top: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#list {
+    position: absolute;
+    animation: 5s move infinite linear;
+    width: 100%;
+}
+
+#list li {
+    font-family: 楷体;
+    font-size: 18px; /* 字体大小增大 */
+    color: white;
+    flex: 1; /* 占据左侧的空间 */
+    text-align: center;
+    margin: 10px 0;
+}
+
+#list :nth-child(2n+1) {
+    border-radius: 10px;
+    background-color: rgb(30,50,100);
+}
+#list :nth-child(2n) {
+    border-radius: 10px;
+    background-color: rgb(30,50,100,0.6);
+}
+#wrapper:hover #list {
+    animation-play-state: paused;
+}
+
     </style>
 </head>
 <body>
@@ -213,6 +341,7 @@
         <a href="contractus.html">关于本站</a>
         <a href="comments.html">意见留言</a>
     </nav>
+
     <div class="container">
         
         <div class="screen">
@@ -225,29 +354,7 @@
             </div>
     
             <div class="s_show">
-                <div class="magictime twisterInUp">
-                    社会实践，让我理解了团队合作的重要性。
-                </div>
-     
-                <div class="magictime twisterInUp">
-                    实践活动让我更深刻地认识了社会责任。
-                </div>
-     
-                <div class="magictime twisterInUp">
-                    参与劳动实践，学会了坚持和奉献。
-                </div>
-     
-                <div class="magictime twisterInUp">
-                    社会实践让我走出校园，接触真实生活。
-                </div>
-     
-                <div class="magictime twisterInUp">
-                    实践过程中，感受到了劳动的辛苦与快乐。
-                </div>
-     
-                <div class="magictime twisterInUp">
-                    在实践中，体验到了不同的职业精神。
-                </div>
+                
      
                 <div class="magictime twisterInUp">
                     通过社会实践，我学会了时间管理。
@@ -275,12 +382,53 @@
                     实践活动让我更加珍惜学习机会。
                 </div>
                 <div class="magictime twisterInUp">
-                    通过社会实践，我增长了见识和技能。
+                    通过社会实践，我增长了见识和技能。通过社会实践，我增长了见识和技能。
                 </div>
 
             </div>
             
         </div>
+
+        <div class="index">
+            <div class="banner">
+                <div class="heading">感悟心得</div><hr class="heading-hr">
+
+                <div id="wrapper">  
+                    <ul id="list">  
+                        <li>永远比一辈子还长，谁能保证这样的誓言不会过期</li>  
+                        <li>爱上一个人容易，等平淡了后，还坚守那份诺言，就不容易了</li>  
+                        <li>爱情总藏在温柔的心里</li>  
+                        <li>爱情是一种永久的信仰</li>  
+                        <li>离开，也是一种喜欢；遗忘，也是一种幸福；放弃，也是一种爱</li>  
+                        <li>常相知，才能不相疑；不相疑，才能常相知</li>  
+                        <li>真正可贵的东西，不可能刻意得到，那需要同样可贵的缘分</li>  
+                        <li>用一转身离开，用一辈子去忘记</li>  
+                        <li>在爱的世界里，没有谁对不起谁，只有谁不懂得珍惜谁</li>  
+                        <li>爱情就是上辈子欠下的情债这辈子来还</li>
+                        <li>深情是我担不起的重担，情话只是偶然兑现的谎言</li>
+                        <li>爱使我们有了距离，距离使我们爱得永久</li>
+                        <li>要善待爱情，因为它不会一辈子跟着你</li>
+                        <li>真正的爱情不仅要求相爱，而且要求相互洞察对方的内心世界在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任</li>
+                        <li>爱是磕磕碰碰中的修修补补</li>
+                        <li>在爱情上，没有相互的忠诚，就没有相互的信任</li>
+                        <li>7月31日上午，“八一”建军节前夕，在全国上下学习贯彻党的二十届三中全会精神之际，</li>
+                        <li>、科技体制改革和人才发展体制机制改革作出了重要部署，对作为三者交汇点的高校特别是“双一流”高校提出了更高要求。双方学校在立德树人、思想政治教育等方面有着共同目标和使命，空军勤务学院作为军事院校有着丰厚的</li>
+                        <li>坚实的人才支撑，奋力书写</li>
+                        <li>在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任</li>
+                        <li>军事院校有着丰厚的思政资源和特色干部队伍建设模式，她希望双方携手加强合作，共同打造新时代军地高校协同创新发</li>
+                        <li>刘波代表学校</li>
+                        <li>在爱情上，没有相互的忠诚，就没有相互的信任</li>
+                        <li>与矿大的联</li>
+                        <li>在中国矿业大学是教育部直属的全国重点高校，是教育部、应急管理部与江苏省人民政府共建高校，先后进入国家“211工程”“985优势学科创新平台项目”和国家“双一流”建设高校行列。</li>
+                        <li>在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任在爱情上，没有相互的忠诚，就没有相互的信任</li>
+                        <li>共同打造新时代军地高校协同创新发展新典范，为强国建设、民族复兴作出新的更大贡献。</li>
+
+                    </ul>  
+                </div>  
+            </div>
+        </div>
+        
+        
 
     </div>
 
@@ -312,10 +460,10 @@ window.onload = function() {
 };
 </script>
 
-
-    <script>
-       // 定义网格大小
+<script>
+// 定义网格大小和缓冲区
 const GRID_SIZE = 100; // 网格单元的宽高（可根据需要调整）
+const BUFFER_SIZE = 10; // 缓冲区大小，单位是像素
 
 // 创建网格
 let grid = [];
@@ -331,15 +479,15 @@ function initGrid() {
 
 // 获取网格位置
 function getGridPosition(top, left) {
-    const row = Math.floor(top / GRID_SIZE);
-    const col = Math.floor(left / GRID_SIZE);
+    const row = Math.floor((top + BUFFER_SIZE) / GRID_SIZE);
+    const col = Math.floor((left + BUFFER_SIZE) / GRID_SIZE);
     return [row, col];
 }
 
 // 检查位置是否可用
 function isPositionAvailable(top, left, objWidth, objHeight) {
-    const [startRow, startCol] = getGridPosition(top, left);
-    const [endRow, endCol] = getGridPosition(top + objHeight, left + objWidth);
+    const [startRow, startCol] = getGridPosition(top - BUFFER_SIZE, left - BUFFER_SIZE);
+    const [endRow, endCol] = getGridPosition(top + objHeight + BUFFER_SIZE, left + objWidth + BUFFER_SIZE);
     for (let row = startRow; row <= endRow; row++) {
         for (let col = startCol; col <= endCol; col++) {
             if (grid[row] && grid[row][col]) {
@@ -402,7 +550,8 @@ function init(obj) {
     obj.style.top = top + "px";
     obj.style.left = left + "px";
     occupyGrid(top, left, obj.offsetWidth, obj.offsetHeight);
-    obj.setAttribute('data-speed', Math.random() + 1);
+    obj.setAttribute('data-speed', Math.random() * 0.5 + 0.5);
+
     obj.setAttribute('data-moving', 'true'); // 标记为正在移动
     move(obj);
 }
@@ -481,6 +630,10 @@ for (var i = 0; i < aShowList.length; i++) {
     init(aShowList[i]);
 }
 
-            </script>
+// 初始网格
+initGrid();
+</script>
+
+
 </body>
 </html>
