@@ -1,11 +1,28 @@
-// netlify/functions/github-auth.js
-
 const axios = require('axios');
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'POST') {
     try {
-      const { code } = JSON.parse(event.body);
+      // 确保 event.body 存在且不是空字符串
+      if (!event.body || event.body.trim() === '') {
+        return {
+          statusCode: 400,
+          body: JSON.stringify({ error: 'Request body is empty' }),
+        };
+      }
+
+      // 尝试解析 event.body
+      let parsedBody;
+      try {
+        parsedBody = JSON.parse(event.body);
+      } catch (parseError) {
+        return {
+          statusCode: 400,
+          body: JSON.stringify({ error: 'Invalid JSON format' }),
+        };
+      }
+
+      const { code } = parsedBody;
 
       if (!code) {
         return {
