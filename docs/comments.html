@@ -52,7 +52,7 @@
     try {
       const code = new URL(window.location.href).searchParams.get("code");
       if (code) {
-        const response = await fetch('/.netlify/functions/comment', {
+        const response = await fetch('../netlify/functions/comment', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
