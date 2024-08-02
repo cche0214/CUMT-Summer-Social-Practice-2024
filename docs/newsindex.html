@@ -7,7 +7,7 @@
     <title>中国矿业大学·E新向党实践团</title>
     <link rel="icon" href="./images/中国矿业大学_校徽.png" type="image/png">
     <link rel="stylesheet" href="./css/framework.css">
-    <link rel="stylesheet" href="./css/redstoryindex.css">
+    <link rel="stylesheet" href="./css/newsindex.css">
 </head>
 
 <body>
@@ -32,9 +32,11 @@
         <div class="redstoryindex">
 
             <div class="search-container">
-                <input type="text" placeholder="请输入搜索内容">
-                <button type="button">搜索</button>
+                <input type="text" id="search-input" placeholder="请输入搜索内容">
+                <button type="button" id="search-button">搜索</button>
+                <button type="button" id="reset-button">返回</button>
             </div>
+            
             
             <div class="card">
                 <div class="content">
@@ -196,10 +198,48 @@
                 </div>
             </div>
 
+            <div class="card">
+                <div class="content">
+                    <h2>广州</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <h2>广州</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="content">
+                    <h2>广州</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div><div class="card">
+                <div class="content">
+                    <h2>广州</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="content">
+                    <h2>广州</h2>
+                    <p>总结了团队在乡村振兴项目中的实践经验，探讨了可持续发展的策略与方法。</p>
+                    <a href="https://www.cumt.edu.cn/" class="button">查看更多</a>
+                </div>
+            </div>
+
             <div class="pagination-container">
                 <div class="pagination">
                     <button class="page-arrow" id="prev-page">&lt; 上一页</button>
-                    <span id="page-number">第 1 页</span>
+                    <span id="page-number">第 1 页 / 共 3 页</span>
                     <button class="page-arrow" id="next-page">下一页 &gt;</button>
                 </div>
             </div>    
@@ -214,53 +254,136 @@
 
     <script>
         // 定义每页显示的卡片数（例如：3行 x 4列 = 12个卡片）
-const cardsPerPage = 12; 
-let currentPage = 1; // 当前页数
-
-// 获取所有卡片
-const cards = document.querySelectorAll('.card');
-// 计算总页数
-const totalPages = Math.ceil(cards.length / cardsPerPage);
-
-// 显示指定页码的卡片
-const showPage = (page) => {
-    cards.forEach((card, index) => {
-        card.style.display = 'none'; // 隐藏所有卡片
-        // 显示当前页的卡片
-        if (index >= (page - 1) * cardsPerPage && index < page * cardsPerPage) {
-            card.style.display = 'flex'; // 只显示当前页的卡片
-        }
-    });
-};
-
-// 更新页码显示
-const updatePageNumber = () => {
-    document.getElementById('page-number').textContent = `第 ${currentPage} 页`;
-};
-
-// 上一页按钮点击事件
-document.getElementById('prev-page').addEventListener('click', () => {
-    if (currentPage > 1) {
-        currentPage--; // 页数减少
-        showPage(currentPage); // 显示新的当前页卡片
-        updatePageNumber(); // 更新页码显示
-    }
-});
-
-// 下一页按钮点击事件
-document.getElementById('next-page').addEventListener('click', () => {
-    if (currentPage < totalPages) {
-        currentPage++; // 页数增加
-        showPage(currentPage); // 显示新的当前页卡片
-        updatePageNumber(); // 更新页码显示
-    }
-});
-
-// 初始化显示第一页卡片并设置页码
-showPage(currentPage);
-updatePageNumber();
-
+        const cardsPerPage = 12; 
+        let currentPage = 1; // 当前页数
+    
+        // 获取所有卡片
+        const allCards = document.querySelectorAll('.card');
+        let totalPages = Math.ceil(allCards.length / cardsPerPage); // 总页数
+        let filteredCards = Array.from(allCards); // 用于存储搜索或过滤后的卡片
+    
+        // 显示指定页码的卡片
+        const displayPage = (page) => {
+            filteredCards.forEach(card => card.style.display = 'none'); // 隐藏所有卡片
+            filteredCards.forEach((card, index) => {
+                if (index >= (page - 1) * cardsPerPage && index < page * cardsPerPage) {
+                    card.style.display = 'flex'; // 只显示当前页的卡片
+                }
+            });
+        };
+    
+        // 更新页码显示
+        const updatePageNumber = () => {
+            document.getElementById('page-number').textContent = `第 ${currentPage} 页 / 共 ${totalPages} 页`;
+        };
+    
+        // 上一页按钮点击事件
+        document.getElementById('prev-page').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--; // 页数减少
+                displayPage(currentPage); // 显示新的当前页卡片
+                updatePageNumber(); // 更新页码显示
+            }
+        });
+    
+        // 下一页按钮点击事件
+        document.getElementById('next-page').addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++; // 页数增加
+                displayPage(currentPage); // 显示新的当前页卡片
+                updatePageNumber(); // 更新页码显示
+            }
+        });
+    
+        // 初始化显示第一页卡片并设置页码
+        displayPage(currentPage);
+        updatePageNumber();
     </script>
+    
+    <script>
+        // 定义用于搜索功能的变量
+        const searchInput = document.querySelector('#search-input');
+        const searchButton = document.querySelector('#search-button');
+        const resetButton = document.querySelector('#reset-button');
+    
+        // 搜索结果的卡片集合和页码
+        let searchResults = Array.from(allCards);
+        let currentSearchPage = 1;
+        let totalSearchPages = Math.ceil(searchResults.length / cardsPerPage);
+    
+        // 显示搜索结果的指定页码的卡片
+        const displaySearchPage = (page) => {
+            allCards.forEach(card => card.style.display = 'none'); // 隐藏所有卡片
+            searchResults.forEach((card, index) => {
+                if (index >= (page - 1) * cardsPerPage && index < page * cardsPerPage) {
+                    card.style.display = 'flex'; // 只显示当前页的卡片
+                }
+            });
+        };
+    
+        // 更新搜索结果的页码显示
+        const updateSearchPageNumber = () => {
+            document.getElementById('page-number').textContent = `第 ${currentSearchPage} 页 / 共 ${totalSearchPages} 页`;
+        };
+    
+        // 搜索并更新显示的卡片
+        const searchCards = () => {
+            const query = searchInput.value.trim(); // 获取搜索框内容并去除空白字符
+    
+            // 如果搜索框为空，不进行搜索
+            if (!query) {
+                return;
+            }
+    
+            // 筛选匹配的卡片
+            searchResults = Array.from(allCards).filter(card => {
+                const title = card.querySelector('h2').textContent; // 获取卡片标题
+                return title.includes(query); // 检查标题是否包含搜索内容
+            });
+    
+            // 处理搜索结果为空的情况
+            if (searchResults.length === 0) {
+                totalSearchPages = 1;
+                currentSearchPage = 1;
+            } else {
+                // 重新计算总页数并更新显示
+                totalSearchPages = Math.ceil(searchResults.length / cardsPerPage);
+                currentSearchPage = 1; // 重置为第一页
+            }
+    
+            updateSearchPageNumber();
+            displaySearchPage(currentSearchPage);
+        };
+    
+        // 重置搜索结果显示所有卡片
+        const resetSearch = () => {
+            searchInput.value = ''; // 清空搜索框
+            searchResults = Array.from(allCards); // 重置显示所有卡片
+            currentSearchPage = 1; // 重置为第一页
+            totalSearchPages = Math.ceil(searchResults.length / cardsPerPage); // 重新计算总页数
+            updateSearchPageNumber(); // 更新页码显示
+            displaySearchPage(currentSearchPage); // 显示第一页的卡片
+        };
+    
+        // 搜索按钮点击事件
+        searchButton.addEventListener('click', searchCards);
+    
+        // 返回按钮点击事件
+        resetButton.addEventListener('click', resetSearch);
+    
+        // 搜索框中按回车键也可触发搜索
+        searchInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                searchCards();
+            }
+        });
+    
+        // 初始化显示第一页卡片并设置页码
+        displaySearchPage(currentSearchPage);
+        updateSearchPageNumber();
+    </script>
+    
+    
 
 </body>
 </html>
