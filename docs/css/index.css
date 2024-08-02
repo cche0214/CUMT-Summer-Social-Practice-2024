@@ -148,7 +148,7 @@ header span {
     text-indent: 2em;
     border: 2px solid rgb(30,50,100);
     border-radius: 15px;
-    background-color: rgba(30, 50, 100,0.4);
+    background-color: rgba(30, 50, 100,0.6);
     color: white;
 }
 /* 历史足迹部分CSS样式 */
@@ -207,7 +207,7 @@ header span {
     font-size: 24px;
     border: 2px solid rgb(30,50,100);
     border-radius: 15px;
-    background-color: rgba(30, 50, 100,0.4);
+    background-color: rgba(30, 50, 100,0.6);
     color: white;
 }
 /* 团队初心部分CSS样式 */
@@ -249,11 +249,11 @@ header span {
     border-radius: 15px;
 }
 .boxheart:nth-child(even) .left{
-    background-color: rgba(30, 50, 100,0.4);
+    background-color: rgba(30, 50, 100,0.6);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 .boxheart:nth-child(odd) .right{
-    background-color: rgba(30, 50, 100,0.4);
+    background-color: rgba(30, 50, 100,0.6);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 .center {
