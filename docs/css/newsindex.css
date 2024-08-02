@@ -183,6 +183,7 @@ header span {
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 5px;
 }
 .search-container button:hover {
     background-color: #ff9900;
