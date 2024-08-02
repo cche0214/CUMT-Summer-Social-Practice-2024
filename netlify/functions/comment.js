@@ -1,9 +1,10 @@
-const axios = require('axios');
-
 exports.handler = async (event) => {
+  console.log('Received event:', event); // 输出整个事件对象
+
   if (event.httpMethod === 'POST') {
     try {
-      // 确保 event.body 存在且不是空字符串
+      console.log('Request body:', event.body); // 输出请求体
+
       if (!event.body || event.body.trim() === '') {
         return {
           statusCode: 400,
@@ -11,7 +12,6 @@ exports.handler = async (event) => {
         };
       }
 
-      // 尝试解析 event.body
       let parsedBody;
       try {
         parsedBody = JSON.parse(event.body);
@@ -31,10 +31,9 @@ exports.handler = async (event) => {
         };
       }
 
-      // 使用 GitHub OAuth API 获取访问令牌
       const response = await axios.post('https://github.com/login/oauth/access_token', {
-        client_id: process.env.GITHUB_CLIENT_ID,   // 使用环境变量
-        client_secret: process.env.GITHUB_CLIENT_SECRET, // 使用环境变量
+        client_id: process.env.GITHUB_CLIENT_ID,
+        client_secret: process.env.GITHUB_CLIENT_SECRET,
         code,
       }, {
         headers: {
