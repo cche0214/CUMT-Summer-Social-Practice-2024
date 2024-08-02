@@ -49,33 +49,37 @@
 
   // 使用无服务器函数来处理 GitHub OAuth 流程
   async function authenticateWithGitHub() {
-    try {
-      const code = new URL(window.location.href).searchParams.get("code");
-      if (code) {
-        const response = await fetch('/api/comment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ code }),
-        });
-        const data = await response.json();
-        if (response.ok) {
-          console.log('Access Token:', data.access_token);
-          // 设置 Gitalk 的访问令牌
-          gitalk.accessToken = data.access_token;
-          gitalk.render('gitalk-container');
-        } else {
-          console.error('Error:', data.error);
-        }
-      }
-    } catch (error) {
-      console.error('Network Error:', error);
-    }
-  }
+  try {
+    const code = new URL(window.location.href).searchParams.get("code");
+    if (code) {
+      console.log('Sending authorization code:', code); // 确认发送的 code
 
-  // 调用 authenticateWithGitHub 函数来处理 OAuth 过程
-  authenticateWithGitHub();
+      const response = await fetch('/api/comment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code }),
+      });
+      
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Access Token:', data.access_token);
+        gitalk.accessToken = data.access_token;
+        gitalk.render('gitalk-container');
+      } else {
+        console.error('Error:', data.error);
+      }
+    } else {
+      console.error('No authorization code found');
+    }
+  } catch (error) {
+    console.error('Network Error:', error);
+  }
+}
+
+authenticateWithGitHub();
+
 </script>
 
 </body>
