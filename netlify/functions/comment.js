@@ -1,18 +1,13 @@
 const clientID = 'Ov23ct32Klst4n5NyZJj';
 const redirectUri = 'https://cche0214.github.io/CUMT-Summer-Social-Practice-2024/comments.html';
 
-function initiateGitHubLogin() {
-    const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientID}&redirect_uri=${encodeURIComponent(redirectUri)}`;
-    window.location.href = authUrl;
-}
-
 async function authenticateWithGitHub() {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
 
     if (code) {
         try {
-            const response = await fetch('/.netlify/functions/comment', {
+            const response = await fetch('/api/comment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,5 +40,4 @@ async function authenticateWithGitHub() {
     }
 }
 
-document.getElementById('loginButton').addEventListener('click', initiateGitHubLogin);
 authenticateWithGitHub();
