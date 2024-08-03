@@ -47,14 +47,13 @@
   });
   gitalk.render('gitalk-container');
 
-  // 使用无服务器函数来处理 GitHub OAuth 流程
   async function authenticateWithGitHub() {
   try {
     const code = new URL(window.location.href).searchParams.get("code");
     if (code) {
-      console.log('Sending authorization code:', code); // 确认发送的 code
+      console.log('Sending authorization code:', code);
 
-      const response = await fetch('/api/comment', {
+      const response = await fetch('/api/comment', { // 使用相对路径指向 Netlify 函数
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,6 +78,7 @@
 }
 
 authenticateWithGitHub();
+
 
 </script>
 
