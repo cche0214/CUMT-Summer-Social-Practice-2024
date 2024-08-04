@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 exports.handler = async function(event, context) {
   // 从请求体中获取授权码
@@ -11,33 +11,28 @@ exports.handler = async function(event, context) {
 
   try {
     // 向 GitHub 的授权服务器发送 POST 请求以获取访问令牌
-    const response = await fetch('https://github.com/login/oauth/access_token', {
-      method: 'POST',
+    const response = await axios.post('https://github.com/login/oauth/access_token', {
+      client_id: clientID,
+      client_secret: clientSecret,
+      code,
+      redirect_uri: redirectUri,
+    }, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        client_id: clientID,
-        client_secret: clientSecret,
-        code,
-        redirect_uri: redirectUri,
-      }),
+      }
     });
-    
-    // 解析 GitHub 响应的 JSON 数据
-    const data = await response.json();
 
     // 根据响应状态返回结果
-    if (response.ok) {
+    if (response.status === 200) {
       return {
         statusCode: 200,
-        body: JSON.stringify(data), // 返回访问令牌
+        body: JSON.stringify(response.data), // 返回访问令牌
       };
     } else {
       return {
         statusCode: response.status,
-        body: JSON.stringify({ error: data.error_description }), // 返回错误描述
+        body: JSON.stringify({ error: response.data.error_description }), // 返回错误描述
       };
     }
   } catch (error) {
