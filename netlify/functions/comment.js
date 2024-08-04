@@ -1,5 +1,5 @@
 const clientID = 'Ov23ct32Klst4n5NyZJj';
-const redirectUri = 'https://cche0214.github.io/CUMT-Summer-Social-Practice-2024/comments.html';
+const redirectUri = 'https://cumt-summer-social-practice-2024.netlify.app/comments';
 
 async function authenticateWithGitHub() {
     const urlParams = new URLSearchParams(window.location.search);
