@@ -27,58 +27,15 @@
     <a href="comments.html" class="active">意见留言</a>
   </nav>
   <!-- 评论容器 -->
-  <div id="gitalk-container"></div>
+  <div id="talk-container">
+    <a href="https://github.com/cche0214/CUMT-Summer-Social-Practice-2024/issues/5">单击此处评论</a>
+  </div>
 
   <div class="footer">
     <p>
         联系电话：13832379532&nbsp;电子信箱：08232716@cumt.edu.cn&nbsp;中国矿业大学·E心向党社会实践版权所有
     </p>
 </div>
-
-<script>
-  const gitalk = new Gitalk({
-    clientID: 'Ov23ct32Klst4n5NyZJj', // 替换为你的 Client ID
-    clientSecret: '', // 通过无服务器函数处理
-    repo: 'CUMT-Summer-Social-Practice-2024', // 你的 GitHub 仓库名
-    owner: 'cche0214', // 你的 GitHub 用户名
-    admin: ['cche0214'], // 管理员用户名
-    id: location.pathname, // 确保唯一性且长度小于 50
-    distractionFreeMode: false // 是否启用全屏模式
-  });
-  gitalk.render('gitalk-container');
-
-  async function authenticateWithGitHub() {
-  try {
-    const code = new URL(window.location.href).searchParams.get("code");
-    if (code) {
-      console.log('Sending authorization code:', code);
-
-      const response = await fetch('/api/comment', { // 使用相对路径指向 Netlify 函数
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ code }),
-      });
-      
-      const data = await response.json();
-      if (response.ok) {
-        console.log('Access Token:', data.access_token);
-        gitalk.accessToken = data.access_token;
-        gitalk.render('gitalk-container');
-      } else {
-        console.error('Error:', data.error);
-      }
-    } else {
-      console.error('No authorization code found');
-    }
-  } catch (error) {
-    console.error('Network Error:', error);
-  }
-}
-
-authenticateWithGitHub();
-
 
 </script>
 
